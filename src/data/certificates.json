@@ -1,0 +1,26 @@
+[
+  {
+    "id": "fe-dev",
+    "title": "Frontend Development",
+    "issuer": "Dicoding",
+    "date": "2025",
+    "category": "Web",
+    "url": "#"
+  },
+  {
+    "id": "js-algo",
+    "title": "JavaScript Algorithms & Data Structures",
+    "issuer": "freeCodeCamp",
+    "date": "2024",
+    "category": "Algorithms",
+    "url": "#"
+  },
+  {
+    "id": "responsive",
+    "title": "Responsive Web Design",
+    "issuer": "freeCodeCamp",
+    "date": "2024",
+    "category": "Design",
+    "url": "#"
+  }
+]

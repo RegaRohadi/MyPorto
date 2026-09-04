@@ -1,0 +1,24 @@
+{
+  "name": "Player One",
+  "role": "Frontend Developer",
+  "tagline": "I build playful, pixel-sharp interfaces.",
+  "description": [
+    "Frontend developer who turns dense data into interfaces that are fast to scan and fun to use. I care about accessibility, performance, and the small details that make a product feel finished.",
+    "Comfortable with React, TypeScript, and design systems. I ship small, polished products and keep the pixel count honest."
+  ],
+  "skills": [
+    { "category": "Languages", "items": ["TypeScript", "JavaScript", "HTML", "CSS", "SQL"] },
+    { "category": "Frameworks", "items": ["React", "Next.js", "Tailwind", "Vite"] },
+    { "category": "Tools", "items": ["Git", "Figma", "Vitest", "Vercel"] }
+  ],
+  "stats": [
+    { "label": "Experience", "value": "2 yrs" },
+    { "label": "Level", "value": "Mid" },
+    { "label": "Projects", "value": "3" }
+  ],
+  "contact": {
+    "email": "hello@playerone.dev",
+    "github": "https://github.com/playerone",
+    "linkedin": "https://linkedin.com/in/playerone"
+  }
+}

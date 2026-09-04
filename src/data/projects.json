@@ -1,0 +1,32 @@
+[
+  {
+    "id": "nebula-dash",
+    "level": 1,
+    "title": "Nebula Dash",
+    "tagline": "Analytics dashboard for indie games — fast, playful, readable.",
+    "thumb": "https://picsum.photos/seed/nebula/800/520",
+    "stack": ["React", "TypeScript", "Tailwind", "Recharts"],
+    "links": { "live": "#", "github": "#" },
+    "detail": "Role: Frontend lead. Challenge: dense data had to stay scannable in a retro theme. Solution: inventory-style metric cards + minimal charts. Result: loads in <1.2s, demo used by 3 indie studios."
+  },
+  {
+    "id": "pixel-cart",
+    "level": 2,
+    "title": "Pixel Cart",
+    "tagline": "Headless e-commerce with GBA-tinted checkout flow.",
+    "thumb": "https://picsum.photos/seed/pixelcart/800/520",
+    "stack": ["Next.js", "Stripe", "Embla", "Framer Motion"],
+    "links": { "live": "#", "github": "#" },
+    "detail": "Role: Fullstack. Challenge: cart & promos had to stay clear without a swipe trap. Solution: horizontal carousel + sticky #ff6b6b CTA. Result: +18% CTR to checkout."
+  },
+  {
+    "id": "echo-notes",
+    "level": 3,
+    "title": "Echo Notes",
+    "tagline": "Minimal note-taking with offline sync — no backend required.",
+    "thumb": "https://picsum.photos/seed/echo/800/520",
+    "stack": ["Vite", "IndexedDB", "PWA"],
+    "links": { "live": "#", "github": "#" },
+    "detail": "Role: Solo build. Challenge: conflict-free offline sync. Solution: lightweight CRDT + sync indicator. Result: 4.8 rating on Product Hunt launch."
+  }
+]
