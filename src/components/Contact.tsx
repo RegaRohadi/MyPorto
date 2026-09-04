@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { PROFILE } from '../data'
 import { CheckIcon, CopyIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
+import { SectionHeader } from './SectionHeader'
 import type { RegisterFn } from './actions'
 
 export function Contact({ active, register }: { active: boolean; register: RegisterFn }) {
@@ -32,7 +33,7 @@ export function Contact({ active, register }: { active: boolean; register: Regis
   return (
     <div className="h-full overflow-y-auto px-6 py-6">
       <div className="max-w-2xl mx-auto">
-        <h2 className="h-section">CONTACT</h2>
+        <SectionHeader title="CONTACT" active={active} />
         <p className="body-copy mt-3" style={{ color: 'var(--gba-dim)' }}>
           Have a project or just want to say hi? Reach me through any of the channels below.
         </p>

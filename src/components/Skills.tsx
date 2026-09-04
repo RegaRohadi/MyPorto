@@ -1,16 +1,12 @@
 import { PROFILE } from '../data'
+import { SectionHeader } from './SectionHeader'
 
-export function Skills() {
+export function Skills({ active }: { active?: boolean }) {
   return (
     <div className="h-full overflow-y-auto px-6 py-6">
       <div className="min-h-full flex flex-col justify-center">
         <div className="max-w-5xl mx-auto w-full">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="h-section">SKILLS</h2>
-          <p className="pixel text-[9px]" style={{ color: 'var(--gba-dim)' }}>
-            LOADOUT
-          </p>
-        </div>
+        <SectionHeader title="SKILLS" meta="LOADOUT" active={active} />
         <div className="grid gap-4 mt-4 sm:grid-cols-3">
           {PROFILE.skills.map((g) => (
             <div key={g.category} className="card p-4">

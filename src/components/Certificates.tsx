@@ -3,6 +3,7 @@ import { CERTIFICATES } from '../data'
 import { AWARD_ART } from '../data/art'
 import { Carousel, type CarouselHandle } from './Carousel'
 import { PixelArt } from './PixelArt'
+import { SectionHeader } from './SectionHeader'
 import type { RegisterFn } from './actions'
 
 export function Certificates({ active, register }: { active: boolean; register: RegisterFn }) {
@@ -25,12 +26,7 @@ export function Certificates({ active, register }: { active: boolean; register: 
   return (
     <div className="h-full overflow-y-auto px-6 py-4 flex flex-col">
       <div className="max-w-5xl mx-auto w-full">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="h-section">CERTIFICATES</h2>
-          <p className="pixel text-[9px]" style={{ color: 'var(--gba-dim)' }}>
-            ACHIEVEMENTS
-          </p>
-        </div>
+        <SectionHeader title="CERTIFICATES" meta="ACHIEVEMENTS" active={active} />
       </div>
 
       <div className="max-w-5xl mx-auto w-full mt-3 flex-1">

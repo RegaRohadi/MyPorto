@@ -118,7 +118,7 @@ export default function App() {
               <About active={screen === 1} register={register} onContact={() => navigate(5)} />
             </section>
             <section className="screen-page" aria-label="Skills">
-              <Skills />
+              <Skills active={screen === 2} />
             </section>
             <section className="screen-page" aria-label="Projects">
               <Projects active={screen === 3} register={register} />

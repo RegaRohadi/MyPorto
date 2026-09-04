@@ -4,6 +4,7 @@ import { PROJECT_ART } from '../data/art'
 import { Carousel, type CarouselHandle } from './Carousel'
 import { PixelArt } from './PixelArt'
 import { ProjectModal } from './ProjectModal'
+import { SectionHeader } from './SectionHeader'
 import type { RegisterFn } from './actions'
 
 export function Projects({ active, register }: { active: boolean; register: RegisterFn }) {
@@ -29,12 +30,7 @@ export function Projects({ active, register }: { active: boolean; register: Regi
   return (
     <div className="h-full overflow-y-auto px-6 py-4 flex flex-col">
       <div className="max-w-5xl mx-auto w-full">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="h-section">PROJECTS</h2>
-          <p className="pixel text-[9px]" style={{ color: 'var(--gba-dim)' }}>
-            LEVEL SELECT
-          </p>
-        </div>
+        <SectionHeader title="PROJECTS" meta="LEVEL SELECT" active={active} />
       </div>
 
       <div className="max-w-5xl mx-auto w-full mt-3 flex-1">

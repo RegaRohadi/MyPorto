@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { PROFILE } from '../data'
 import { PixelArt } from './PixelArt'
+import { SectionHeader } from './SectionHeader'
 import type { RegisterFn } from './actions'
 
 const AVATAR = [
@@ -39,7 +40,7 @@ export function About({
           </div>
         </div>
         <div className="flex-1">
-          <h2 className="h-section">ABOUT ME</h2>
+          <SectionHeader title="ABOUT ME" active={active} />
           <p className="mt-4 text-sm sm:text-base font-semibold" style={{ color: 'var(--gba-em)' }}>
             {PROFILE.tagline}
           </p>
