@@ -34,13 +34,23 @@ export function Projects({ active, register }: { active: boolean; register: Regi
       </div>
 
       <div className="max-w-5xl mx-auto w-full mt-3 flex-1">
-        <Carousel
-          ref={carouselRef}
-          label="Projects"
-          hintKey="gba-projects-hint"
-          onIndexChange={setActiveIndex}
-          className="carousel-projects"
-        >
+        {PROJECTS.length === 0 ? (
+          <div className="card p-6 text-center">
+            <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
+              NO SAVES FOUND
+            </p>
+            <p className="text-sm mt-2" style={{ color: 'var(--gba-dim)' }}>
+              New projects are being loaded — check back soon.
+            </p>
+          </div>
+        ) : (
+          <Carousel
+            ref={carouselRef}
+            label="Projects"
+            hintKey="gba-projects-hint"
+            onIndexChange={setActiveIndex}
+            className="carousel-projects"
+          >
           {PROJECTS.map((p) => (
             <article
               key={p.id}
@@ -62,9 +72,6 @@ export function Projects({ active, register }: { active: boolean; register: Regi
                 <div className="flex items-center justify-between">
                   <span className="pixel text-[9px]" style={{ color: 'var(--gba-em)' }}>
                     LEVEL {p.level}
-                  </span>
-                  <span className="pixel text-[9px]" style={{ color: 'var(--gba-dim)' }}>
-                    {String(p.level).padStart(2, '0')}
                   </span>
                 </div>
 
@@ -104,6 +111,7 @@ export function Projects({ active, register }: { active: boolean; register: Regi
             </article>
           ))}
         </Carousel>
+        )}
       </div>
 
       {open && <ProjectModal project={open} onClose={() => setOpenId(null)} />}

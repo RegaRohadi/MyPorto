@@ -30,12 +30,22 @@ export function Certificates({ active, register }: { active: boolean; register: 
       </div>
 
       <div className="max-w-5xl mx-auto w-full mt-3 flex-1">
-        <Carousel
-          ref={carouselRef}
-          label="Certificates"
-          hintKey="gba-certs-hint"
-          onIndexChange={setActiveIndex}
-        >
+        {CERTIFICATES.length === 0 ? (
+          <div className="card p-6 text-center">
+            <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
+              NO TROPHIES YET
+            </p>
+            <p className="text-sm mt-2" style={{ color: 'var(--gba-dim)' }}>
+              New certificates are being verified — check back soon.
+            </p>
+          </div>
+        ) : (
+          <Carousel
+            ref={carouselRef}
+            label="Certificates"
+            hintKey="gba-certs-hint"
+            onIndexChange={setActiveIndex}
+          >
           {CERTIFICATES.map((c) => (
             <article key={c.id} className="card h-full flex flex-col items-center text-center p-4">
               <PixelArt rows={AWARD_ART} className="w-20 h-20" />
@@ -57,6 +67,7 @@ export function Certificates({ active, register }: { active: boolean; register: 
             </article>
           ))}
         </Carousel>
+        )}
       </div>
     </div>
   )

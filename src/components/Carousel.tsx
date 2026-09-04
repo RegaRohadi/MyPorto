@@ -124,38 +124,46 @@ export const Carousel = forwardRef<CarouselHandle, Props>(function Carousel(
           ))}
         </div>
       </div>
-      <div className="carousel-ui">
-        <button
-          type="button"
-          className="arrow-btn focus-ring"
-          onClick={scrollPrev}
-          disabled={index === 0}
-          aria-label="Previous item"
-        >
-          <ArrowLeftIcon className="w-4 h-4" />
-        </button>
-        <div className="dots">
-          {Array.from({ length: count }).map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              className={`dot focus-ring ${i === index ? 'dot-active' : ''}`}
-              onClick={() => scrollTo(i)}
-              aria-label={`Go to item ${i + 1}`}
-              aria-current={i === index}
-            />
-          ))}
+      {count > 1 && (
+        <div className="carousel-ui">
+          <button
+            type="button"
+            className="arrow-btn focus-ring"
+            onClick={scrollPrev}
+            disabled={index === 0}
+            aria-disabled={index === 0}
+            tabIndex={index === 0 ? -1 : undefined}
+            aria-label="Previous item"
+          >
+            <ArrowLeftIcon className="w-4 h-4" />
+          </button>
+          <div className="dots" role="tablist" aria-label={`${label ?? 'Items'} pagination`}>
+            {Array.from({ length: count }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                className={`dot focus-ring ${i === index ? 'dot-active' : ''}`}
+                onClick={() => scrollTo(i)}
+                aria-label={`Go to item ${i + 1} of ${count}`}
+                aria-selected={i === index}
+                tabIndex={i === index ? undefined : -1}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            className="arrow-btn focus-ring"
+            onClick={scrollNext}
+            disabled={index === count - 1}
+            aria-disabled={index === count - 1}
+            tabIndex={index === count - 1 ? -1 : undefined}
+            aria-label="Next item"
+          >
+            <ArrowRightIcon className="w-4 h-4" />
+          </button>
         </div>
-        <button
-          type="button"
-          className="arrow-btn focus-ring"
-          onClick={scrollNext}
-          disabled={index === count - 1}
-          aria-label="Next item"
-        >
-          <ArrowRightIcon className="w-4 h-4" />
-        </button>
-      </div>
+      )}
       <div className="counter pixel">
         {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
       </div>

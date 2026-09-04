@@ -36,7 +36,7 @@ export function About({
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-start">
         <div className="shrink-0 mx-auto md:mx-0">
           <div className="card p-3">
-            <PixelArt rows={AVATAR} className="w-32 h-24" />
+            <PixelArt rows={AVATAR} className="w-32 h-24" label="Pixel-art avatar of the portfolio owner" />
           </div>
         </div>
         <div className="flex-1">
@@ -52,7 +52,7 @@ export function About({
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto mt-4 grid grid-cols-3 gap-4">
+      <div className="max-w-5xl mx-auto mt-4 grid grid-cols-3 gap-2 sm:gap-4">
         {PROFILE.stats.map((s) => (
           <div key={s.label} className="stat text-center">
             <div className="stat-value">{s.value}</div>

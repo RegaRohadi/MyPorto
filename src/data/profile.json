@@ -1,20 +1,62 @@
 {
-  "name": "Player One",
-  "role": "Frontend Developer",
-  "tagline": "I build playful, pixel-sharp interfaces.",
+  "name": "Nandhika Rega Rohadi",
+  "role": "FullStack and Mobile Developer",
+  "tagline": "I build thoughtful web & mobile experiences.",
   "description": [
-    "Frontend developer who turns dense data into interfaces that are fast to scan and fun to use. I care about accessibility, performance, and the small details that make a product feel finished.",
-    "Comfortable with React, TypeScript, and design systems. I ship small, polished products and keep the pixel count honest."
+    "I am a graduate of Informatics from Universitas Sebelas Maret (UNS) with a strong interest and experience in web and mobile application development. I have experience in full-stack development, including building user interfaces, developing REST APIs, managing databases, and integrating systems.",
+    "I am familiar with technologies such as Laravel, React, Vue, Next.js, and mobile application development. I am passionate about writing clean code, building well-structured systems, and solving problems through technology. I am eager to continuously learn and grow while contributing to a team in developing effective and high-quality digital solutions."
   ],
   "skills": [
-    { "category": "Languages", "items": ["TypeScript", "JavaScript", "HTML", "CSS", "SQL"] },
-    { "category": "Frameworks", "items": ["React", "Next.js", "Tailwind", "Vite"] },
-    { "category": "Tools", "items": ["Git", "Figma", "Vitest", "Vercel"] }
+    {
+      "category": "Languages",
+      "items": [
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "SQL",
+        "PHP",
+        "Kotlin",
+        "C",
+        "C++",
+        "Python"
+      ]
+    },
+    {
+      "category": "Frameworks",
+      "items": [
+        "React",
+        "Next.js",
+        "Tailwind",
+        "Vite",
+        "React-Native",
+        "Laravel",
+        "Vue"
+      ]
+    },
+    {
+      "category": "Tools",
+      "items": [
+        "Git",
+        "Figma",
+        "Vitest",
+        "Vercel"
+      ]
+    }
   ],
   "stats": [
-    { "label": "Experience", "value": "2 yrs" },
-    { "label": "Level", "value": "Mid" },
-    { "label": "Projects", "value": "3" }
+    {
+      "label": "Experience",
+      "value": "4 yrs"
+    },
+    {
+      "label": "Level",
+      "value": "Mid"
+    },
+    {
+      "label": "Projects",
+      "value": "3"
+    }
   ],
   "contact": {
     "email": "hello@playerone.dev",

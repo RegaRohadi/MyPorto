@@ -6,19 +6,32 @@ import type { RegisterFn } from './actions'
 
 export function Contact({ active, register }: { active: boolean; register: RegisterFn }) {
   const [copied, setCopied] = useState(false)
+  const [manual, setManual] = useState(false)
+
+  const copyLegacy = (text: string) => {
+    const ta = document.createElement('textarea')
+    ta.value = text
+    ta.style.position = 'fixed'
+    ta.style.opacity = '0'
+    document.body.appendChild(ta)
+    ta.select()
+    const ok = document.execCommand('copy')
+    document.body.removeChild(ta)
+    if (!ok) throw new Error('legacy copy failed')
+  }
 
   const copy = async () => {
+    setManual(false)
     try {
       await navigator.clipboard.writeText(PROFILE.contact.email)
     } catch {
-      const ta = document.createElement('textarea')
-      ta.value = PROFILE.contact.email
-      ta.style.position = 'fixed'
-      ta.style.opacity = '0'
-      document.body.appendChild(ta)
-      ta.select()
-      document.execCommand('copy')
-      document.body.removeChild(ta)
+      try {
+        copyLegacy(PROFILE.contact.email)
+      } catch {
+        // Clipboard is unavailable (permissions, insecure context): let the user copy manually.
+        setManual(true)
+        return
+      }
     }
     setCopied(true)
     window.setTimeout(() => setCopied(false), 1600)
@@ -49,6 +62,17 @@ export function Contact({ active, register }: { active: boolean; register: Regis
               {copied ? 'COPIED' : 'COPY'}
             </button>
           </div>
+          <p className="sr-only" role="status" aria-live="polite">
+            {copied ? 'Email address copied to clipboard' : ''}
+          </p>
+          {manual && (
+            <p className="text-sm mt-3" style={{ color: 'var(--gba-dim)' }}>
+              Automatic copy is blocked here — long-press to select:{' '}
+              <span className="select-all font-mono font-medium" style={{ color: 'var(--gba-fg)' }}>
+                {PROFILE.contact.email}
+              </span>
+            </p>
+          )}
           <a
             className="btn btn-ghost btn-sm focus-ring mt-4"
             href={`mailto:${PROFILE.contact.email}`}

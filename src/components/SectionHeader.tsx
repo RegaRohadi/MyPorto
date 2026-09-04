@@ -19,7 +19,7 @@ export function SectionHeader({ title, meta, active }: Props) {
     <div className="sec-head">
       <div className="sec-head__row">
         {/* key remount replays the boot animation on section enter */}
-        <h2 key={tick} className="h-section sec-boot" aria-label={title}>
+        <h2 key={tick} className="h-section sec-boot">
           <span className="sec-caret" aria-hidden="true">
             &#9654;
           </span>

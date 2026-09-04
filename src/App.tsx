@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react'
+import { Component, useCallback, useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
 import { GbaShell } from './components/GbaShell'
 import { TopNav, type SectionId } from './components/TopNav'
 import { StartScreen } from './components/StartScreen'
@@ -16,6 +16,62 @@ function indexFromHash(): number {
   const h = window.location.hash.replace('#', '')
   const i = ORDER.indexOf(h as SectionId)
   return i === -1 ? 0 : i
+}
+
+/** Isolates one screen's failure so a bad section can't blank the console. */
+class ScreenErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+  render() {
+    if (this.state.failed) {
+      return (
+        <div className="h-full overflow-y-auto px-6 py-6">
+          <div className="card p-6 text-center max-w-2xl mx-auto">
+            <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
+              SCREEN GLITCH
+            </p>
+            <p className="text-sm mt-2" style={{ color: 'var(--gba-dim)' }}>
+              This screen failed to load, but the rest of the console still works. Reload to try
+              again.
+            </p>
+          </div>
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
+
+/**
+ * One pager screen. Off-screen pages are hidden from assistive technology and
+ * made unfocusable so keyboard and screen-reader users only meet the visible screen.
+ */
+function Page({
+  label,
+  index,
+  screen,
+  children,
+}: {
+  label: string
+  index: number
+  screen: number
+  children: ReactNode
+}) {
+  const hidden = index !== screen
+  return (
+    <section
+      className="screen-page"
+      aria-label={label}
+      aria-hidden={hidden || undefined}
+      ref={(el) => {
+        if (el) (el as HTMLElement & { inert: boolean }).inert = hidden
+      }}
+    >
+      <ScreenErrorBoundary>{children}</ScreenErrorBoundary>
+    </section>
+  )
 }
 
 export default function App() {
@@ -111,24 +167,24 @@ export default function App() {
           onPointerCancel={() => (pointerStart.current = null)}
         >
           <div className="screen-track" style={{ transform: `translateY(-${screen * 100}%)` }}>
-            <section className="screen-page" aria-label="Start screen">
+            <Page label="Start screen" index={0} screen={screen}>
               <StartScreen onNavigate={navigate} />
-            </section>
-            <section className="screen-page" aria-label="About me">
+            </Page>
+            <Page label="About me" index={1} screen={screen}>
               <About active={screen === 1} register={register} onContact={() => navigate(5)} />
-            </section>
-            <section className="screen-page" aria-label="Skills">
+            </Page>
+            <Page label="Skills" index={2} screen={screen}>
               <Skills active={screen === 2} />
-            </section>
-            <section className="screen-page" aria-label="Projects">
+            </Page>
+            <Page label="Projects" index={3} screen={screen}>
               <Projects active={screen === 3} register={register} />
-            </section>
-            <section className="screen-page" aria-label="Certificates">
+            </Page>
+            <Page label="Certificates" index={4} screen={screen}>
               <Certificates active={screen === 4} register={register} />
-            </section>
-            <section className="screen-page" aria-label="Contact">
+            </Page>
+            <Page label="Contact" index={5} screen={screen}>
               <Contact active={screen === 5} register={register} />
-            </section>
+            </Page>
           </div>
         </div>
       </GbaShell>

@@ -15,7 +15,7 @@ export function usePrefs() {
     if (saved === 'dark' || saved === 'light') return saved
     return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
   })
-  const [reduce, setReduce] = useState<boolean>(() => {
+  const [reduce] = useState<boolean>(() => {
     const saved = read<boolean>('gba-reduce')
     return saved ?? window.matchMedia('(prefers-reduced-motion: reduce)').matches
   })

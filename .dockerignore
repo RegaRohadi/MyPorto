@@ -5,7 +5,6 @@ dist
 Dockerfile
 .dockerignore
 docker-compose*.yml
-nginx.conf
 README.md
 *.md
 .vscode
