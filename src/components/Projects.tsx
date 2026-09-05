@@ -71,7 +71,7 @@ export function Projects({ active, register }: { active: boolean; register: Regi
               <div className="flex-1 min-w-0 flex flex-col">
                 <div className="flex items-center justify-between">
                   <span className="pixel text-[9px]" style={{ color: 'var(--gba-em)' }}>
-                    LEVEL {p.level}
+                    Project {p.level}
                   </span>
                 </div>
 
