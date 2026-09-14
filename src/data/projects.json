@@ -4,9 +4,9 @@
     "level": 1,
     "title": "TrackRead",
     "tagline": "Personal reading tracker ",
-    "thumb": "https://picsum.photos/seed/nebula/800/520",
+    "thumb": "/logos/trackread.png",
     "stack": ["Vue", "TypeScript", "Laravel", "Tailwind"],
-    "links": { "live": "#", "github": "https://github.com/RegaRohadi/TrackRead_Front-end" },
+    "links": { "live": "https://trackread.regazgaz.online", "github": "https://github.com/RegaRohadi/TrackRead_Front-end" },
     "detail": "Role: Frontend lead. Challenge: dense data had to stay scannable in a retro theme. Solution: inventory-style metric cards + minimal charts. Result: loads in <1.2s, demo used by 3 indie studios."
   },
   {
@@ -14,9 +14,9 @@
     "level": 2,
     "title": "InternalDesk",
     "tagline": "Internal support ticketing",
-    "thumb": "https://picsum.photos/seed/pixelcart/800/520",
+    "thumb": "/logos/internaldesk.png",
     "stack": ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-    "links": { "live": "#", "github": "https://github.com/RegaRohadi/InternalDesk" },
+    "links": { "live": "https://internaldesk.regazgaz.online", "github": "https://github.com/RegaRohadi/InternalDesk" },
     "detail": "Role: Fullstack. Challenge: cart & promos had to stay clear without a swipe trap. Solution: horizontal carousel + sticky #ff6b6b CTA. Result: +18% CTR to checkout."
   },
   {
@@ -24,7 +24,7 @@
     "level": 3,
     "title": "Echo Notes",
     "tagline": "Minimal note-taking with offline sync — no backend required.",
-    "thumb": "https://picsum.photos/seed/echo/800/520",
+    "thumb": "",
     "stack": ["Vite", "IndexedDB", "PWA"],
     "links": { "live": "#", "github": "#" },
     "detail": "Role: Solo build. Challenge: conflict-free offline sync. Solution: lightweight CRDT + sync indicator. Result: 4.8 rating on Product Hunt launch."

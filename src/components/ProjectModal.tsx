@@ -71,8 +71,19 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
           </button>
         </div>
         <div className="p-4">
-          <div className="rounded-lg overflow-hidden" style={{ border: '1px solid var(--gba-border)' }}>
-            <PixelArt rows={PROJECT_ART[project.id] ?? []} className="w-full aspect-[5/3]" />
+          <div
+            className="rounded-lg overflow-hidden flex items-center justify-center"
+            style={{ border: '1px solid var(--gba-border)', background: 'var(--gba-card-2)' }}
+          >
+            {project.thumb ? (
+              <img
+                src={project.thumb}
+                alt={`${project.title} logo`}
+                className="w-full aspect-[5/3] object-contain"
+              />
+            ) : (
+              <PixelArt rows={PROJECT_ART[project.id] ?? []} className="w-full aspect-[5/3]" />
+            )}
           </div>
           <p className="body-copy mt-4">{project.detail}</p>
           <div className="flex flex-wrap gap-2 mt-4">
