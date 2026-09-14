@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import type { Project } from '../types'
 import { PROJECT_ART } from '../data/art'
 import { PixelArt } from './PixelArt'
+import { SkillIcon } from './SkillIcon'
 import { XIcon } from './icons'
 
 const FOCUSABLE =
@@ -88,7 +89,8 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
           <p className="body-copy mt-4">{project.detail}</p>
           <div className="flex flex-wrap gap-2 mt-4">
             {project.stack.map((s) => (
-              <span className="chip" key={s}>
+              <span className="chip inline-flex items-center gap-1.5" key={s}>
+                <SkillIcon name={s} className="h-5 w-5 shrink-0" />
                 {s}
               </span>
             ))}

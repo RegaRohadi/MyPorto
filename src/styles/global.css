@@ -456,3 +456,84 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
   .lcd{ background:transparent; border-radius:0; box-shadow:none; }
   .scanlines::after{ display:none; }
 }
+
+/* ---- desktop background decorations (GBA arcade flavour) ---- */
+.desktop-decor{
+  display:none;
+  position:fixed; inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+@media (min-width:1024px){
+  .desktop-decor{ display:block; }
+  .app-frame{ position:relative; z-index:0; }
+  .gba-shell{ z-index:1; }
+}
+.dd-grid{
+  position:absolute; inset:-2px;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--gba-border) 40%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--gba-border) 40%, transparent) 1px, transparent 1px);
+  background-size:30px 30px;
+  -webkit-mask-image: radial-gradient(130% 100% at 50% 0%, #000 35%, transparent 88%);
+  mask-image: radial-gradient(130% 100% at 50% 0%, #000 35%, transparent 88%);
+  opacity:.5;
+}
+.dd-glow{ position:absolute; width:560px; height:560px; border-radius:50%; filter:blur(100px); }
+.dd-glow--a{ top:-200px; left:-180px; opacity:.55; background: color-mix(in srgb, var(--gba-hl) 70%, transparent); }
+.dd-glow--b{ bottom:-220px; right:-180px; opacity:.4; background: color-mix(in srgb, var(--gba-accent) 55%, transparent); }
+.dd-watermark{
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-size:clamp(90px, 14vw, 220px);
+  letter-spacing:.04em;
+  white-space:nowrap;
+  user-select:none;
+  color: color-mix(in srgb, var(--gba-hl) 14%, transparent);
+  text-shadow: 0 6px 0 color-mix(in srgb, #000 12%, transparent);
+}
+.dd-float{
+  position:absolute; display:block;
+  opacity:.5;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
+  animation: dd-bob 5s ease-in-out infinite;
+}
+.dd-float svg{ display:block; width:100%; height:100%; }
+.dd-hud{
+  position:absolute; display:flex; align-items:center; gap:8px;
+  font-family:"Press Start 2P", monospace; font-size:10px;
+  letter-spacing:.06em; color:var(--gba-dim);
+}
+.dd-hud--bl{ left:24px; bottom:38px; }
+.dd-hud--br{ right:24px; bottom:38px; }
+.dd-hud__icon{ width:20px; height:20px; }
+.dd-hud__text{ white-space:nowrap; }
+.dd-hud__dim{ opacity:.6; }
+.dd-inventory{
+  position:absolute; left:50%; bottom:34px;
+  transform:translateX(-50%);
+  display:flex; gap:6px;
+}
+.dd-slot{
+  width:32px; height:32px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid color-mix(in srgb, var(--gba-border) 80%, transparent);
+  background: color-mix(in srgb, var(--gba-card) 55%, transparent);
+  border-radius:5px;
+}
+.dd-slot__icon{ width:22px; height:22px; }
+.dd-marquee{
+  position:absolute; left:0; right:0; bottom:0; height:24px;
+  overflow:hidden;
+  border-top:1px solid color-mix(in srgb, var(--gba-border) 70%, transparent);
+  background: color-mix(in srgb, var(--gba-bg) 55%, transparent);
+}
+.dd-marquee__track{ display:inline-flex; height:100%; align-items:center; white-space:nowrap; animation: dd-scroll 34s linear infinite; }
+.dd-marquee__track span{
+  font-family:"Press Start 2P", monospace; font-size:9px;
+  letter-spacing:.28em; color:var(--gba-muted); padding-right:48px;
+}
+@keyframes dd-bob{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-16px) } }
+@keyframes dd-scroll{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+.reduce .dd-float, .reduce .dd-marquee__track{ animation:none; }

@@ -5,8 +5,7 @@ import { SkillIcon } from './SkillIcon'
 export function Skills({ active }: { active?: boolean }) {
   return (
     <div className="h-full overflow-y-auto px-6 py-6">
-      <div className="min-h-full flex flex-col justify-center">
-        <div className="w-full">
+      <div className="w-full">
         <SectionHeader title="SKILLS" meta="LOADOUT" active={active} />
         <div className="grid gap-4 mt-4 sm:grid-cols-3">
           {PROFILE.skills.map((g) => (
@@ -17,14 +16,13 @@ export function Skills({ active }: { active?: boolean }) {
               <div className="flex flex-wrap gap-2 mt-3">
                 {g.items.map((s) => (
                   <span className="chip inline-flex items-center gap-1.5" key={s}>
-                    <SkillIcon name={s} className="h-3.5 w-3.5 shrink-0" />
+                    <SkillIcon name={s} className="h-5 w-5 shrink-0" />
                     {s}
                   </span>
                 ))}
               </div>
             </div>
           ))}
-        </div>
         </div>
       </div>
     </div>

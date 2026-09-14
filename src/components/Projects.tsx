@@ -5,6 +5,7 @@ import { Carousel, type CarouselHandle } from './Carousel'
 import { PixelArt } from './PixelArt'
 import { ProjectModal } from './ProjectModal'
 import { SectionHeader } from './SectionHeader'
+import { SkillIcon } from './SkillIcon'
 import type { RegisterFn } from './actions'
 
 export function Projects({ active, register }: { active: boolean; register: RegisterFn }) {
@@ -92,7 +93,8 @@ export function Projects({ active, register }: { active: boolean; register: Regi
 
                 <div className="flex flex-wrap gap-1.5 mt-3">
                   {p.stack.map((s) => (
-                    <span className="chip" key={s}>
+                    <span className="chip inline-flex items-center gap-1.5" key={s}>
+                      <SkillIcon name={s} className="h-5 w-5 shrink-0" />
                       {s}
                     </span>
                   ))}

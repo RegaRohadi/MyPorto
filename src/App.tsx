@@ -1,4 +1,5 @@
 import { Component, useCallback, useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
+import { DesktopDecor } from './components/DesktopDecor'
 import { GbaShell } from './components/GbaShell'
 import { TopNav, type SectionId } from './components/TopNav'
 import { StartScreen } from './components/StartScreen'
@@ -154,6 +155,7 @@ export default function App() {
 
   return (
     <div className="app-frame min-h-[100dvh] py-2 px-2 sm:py-4 sm:px-4">
+      <DesktopDecor />
       <GbaShell
         onUp={goPrev}
         onDown={goNext}

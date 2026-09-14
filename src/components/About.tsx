@@ -1,20 +1,9 @@
 import { useEffect } from 'react'
 import { PROFILE } from '../data'
-import { PixelArt } from './PixelArt'
 import { SectionHeader } from './SectionHeader'
 import type { RegisterFn } from './actions'
 
-const AVATAR = [
-  '....bbbb....',
-  '...bbbbbb...',
-  '..bbbbbbbb..',
-  '..bllllllb..',
-  '..blwllwlb..',
-  '..bllllllb..',
-  '..bllllllb..',
-  '...bllllb...',
-  '....bbbb....',
-]
+const AVATAR_SRC = '/profil_pixelated.png'
 
 export function About({
   active,
@@ -36,7 +25,13 @@ export function About({
       <div className="w-full flex flex-col md:flex-row gap-8 items-start">
         <div className="shrink-0 mx-auto md:mx-0">
           <div className="card p-3">
-            <PixelArt rows={AVATAR} className="w-32 h-24" label="Pixel-art avatar of the portfolio owner" />
+            <img
+              src={AVATAR_SRC}
+              alt="Pixel-art portrait of the portfolio owner"
+              loading="lazy"
+              className="w-40 h-40 object-cover rounded-md"
+              style={{ imageRendering: 'pixelated' }}
+            />
           </div>
         </div>
         <div className="flex-1">
