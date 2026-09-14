@@ -1,5 +1,6 @@
 import { PROFILE } from '../data'
 import { SectionHeader } from './SectionHeader'
+import { SkillIcon } from './SkillIcon'
 
 export function Skills({ active }: { active?: boolean }) {
   return (
@@ -15,7 +16,8 @@ export function Skills({ active }: { active?: boolean }) {
               </h3>
               <div className="flex flex-wrap gap-2 mt-3">
                 {g.items.map((s) => (
-                  <span className="chip" key={s}>
+                  <span className="chip inline-flex items-center gap-1.5" key={s}>
+                    <SkillIcon name={s} className="h-3.5 w-3.5 shrink-0" />
                     {s}
                   </span>
                 ))}
