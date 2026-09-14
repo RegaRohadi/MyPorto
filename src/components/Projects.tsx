@@ -29,11 +29,11 @@ export function Projects({ active, register }: { active: boolean; register: Regi
 
   return (
     <div className="h-full overflow-y-auto px-6 py-4 flex flex-col">
-      <div className="max-w-5xl mx-auto w-full">
+      <div className="w-full">
         <SectionHeader title="PROJECTS" meta="LEVEL SELECT" active={active} />
       </div>
 
-      <div className="max-w-5xl mx-auto w-full mt-3 flex-1">
+      <div className="w-full mt-3 flex-1">
         {PROJECTS.length === 0 ? (
           <div className="card p-6 text-center">
             <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>

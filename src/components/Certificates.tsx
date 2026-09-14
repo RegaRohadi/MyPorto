@@ -25,11 +25,11 @@ export function Certificates({ active, register }: { active: boolean; register: 
 
   return (
     <div className="h-full overflow-y-auto px-6 py-4 flex flex-col">
-      <div className="max-w-5xl mx-auto w-full">
+      <div className="w-full">
         <SectionHeader title="CERTIFICATES" meta="ACHIEVEMENTS" active={active} />
       </div>
 
-      <div className="max-w-5xl mx-auto w-full mt-3 flex-1">
+      <div className="w-full mt-3 flex-1">
         {CERTIFICATES.length === 0 ? (
           <div className="card p-6 text-center">
             <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>

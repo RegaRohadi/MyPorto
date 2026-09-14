@@ -33,7 +33,7 @@ export function About({
 
   return (
     <div className="h-full overflow-y-auto px-6 py-6">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-start">
+      <div className="w-full flex flex-col md:flex-row gap-8 items-start">
         <div className="shrink-0 mx-auto md:mx-0">
           <div className="card p-3">
             <PixelArt rows={AVATAR} className="w-32 h-24" label="Pixel-art avatar of the portfolio owner" />
@@ -52,7 +52,7 @@ export function About({
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto mt-4 grid grid-cols-3 gap-2 sm:gap-4">
+      <div className="w-full mt-4 grid grid-cols-3 gap-2 sm:gap-4">
         {PROFILE.stats.map((s) => (
           <div key={s.label} className="stat text-center">
             <div className="stat-value">{s.value}</div>
@@ -61,7 +61,7 @@ export function About({
         ))}
       </div>
 
-      <div className="max-w-5xl mx-auto mt-6">
+      <div className="w-full mt-6">
         <button type="button" className="btn btn-accent focus-ring" onClick={onContact}>
           CONTACT ME
         </button>
