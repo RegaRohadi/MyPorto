@@ -6,7 +6,7 @@ export function Skills({ active }: { active?: boolean }) {
   return (
     <div className="h-full overflow-y-auto px-6 py-6">
       <div className="min-h-full flex flex-col justify-center">
-        <div className="max-w-5xl mx-auto w-full">
+        <div className="w-full">
         <SectionHeader title="SKILLS" meta="LOADOUT" active={active} />
         <div className="grid gap-4 mt-4 sm:grid-cols-3">
           {PROFILE.skills.map((g) => (

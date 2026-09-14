@@ -29,11 +29,11 @@ export function Projects({ active, register }: { active: boolean; register: Regi
 
   return (
     <div className="h-full overflow-y-auto px-6 py-4 flex flex-col">
-      <div className="max-w-5xl mx-auto w-full">
+      <div className="w-full">
         <SectionHeader title="PROJECTS" meta="LEVEL SELECT" active={active} />
       </div>
 
-      <div className="max-w-5xl mx-auto w-full mt-3 flex-1">
+      <div className="w-full mt-3 flex-1">
         {PROJECTS.length === 0 ? (
           <div className="card p-6 text-center">
             <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
@@ -58,13 +58,22 @@ export function Projects({ active, register }: { active: boolean; register: Regi
             >
               <div className="shrink-0">
                 <div
-                  className="rounded-lg overflow-hidden"
-                  style={{ border: '1px solid var(--gba-border)' }}
+                  className="rounded-lg overflow-hidden flex items-center justify-center"
+                  style={{ border: '1px solid var(--gba-border)', background: 'var(--gba-card-2)' }}
                 >
-                  <PixelArt
-                    rows={PROJECT_ART[p.id] ?? []}
-                    className="w-full h-32 sm:w-44 sm:h-44"
-                  />
+                  {p.thumb ? (
+                    <img
+                      src={p.thumb}
+                      alt={`${p.title} logo`}
+                      loading="lazy"
+                      className="w-full h-32 sm:w-44 sm:h-44 object-contain"
+                    />
+                  ) : (
+                    <PixelArt
+                      rows={PROJECT_ART[p.id] ?? []}
+                      className="w-full h-32 sm:w-44 sm:h-44"
+                    />
+                  )}
                 </div>
               </div>
 
@@ -90,13 +99,24 @@ export function Projects({ active, register }: { active: boolean; register: Regi
                 </div>
 
                 <div className="flex gap-2 mt-auto pt-3">
-                  <button
-                    type="button"
-                    className="btn btn-accent btn-sm focus-ring"
-                    onClick={() => setOpenId(p.id)}
-                  >
-                    VIEW DETAILS
-                  </button>
+                  {p.links.live && p.links.live !== '#' ? (
+                    <a
+                      className="btn btn-accent btn-sm focus-ring"
+                      href={p.links.live}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      VIEW DETAILS
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn btn-accent btn-sm focus-ring"
+                      onClick={() => setOpenId(p.id)}
+                    >
+                      VIEW DETAILS
+                    </button>
+                  )}
 
                   <a
                     className="btn btn-ghost btn-sm focus-ring"

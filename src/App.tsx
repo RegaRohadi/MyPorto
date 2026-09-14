@@ -125,6 +125,12 @@ export default function App() {
       } else if (e.key === 'ArrowDown') {
         e.preventDefault()
         goNext()
+      } else if (e.key === 'ArrowLeft' && leftRef.current) {
+        e.preventDefault()
+        leftRef.current()
+      } else if (e.key === 'ArrowRight' && rightRef.current) {
+        e.preventDefault()
+        rightRef.current()
       }
     }
     window.addEventListener('keydown', onKey)
@@ -147,7 +153,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-[100dvh] py-2 px-2 sm:py-4 sm:px-4">
+    <div className="app-frame min-h-[100dvh] py-2 px-2 sm:py-4 sm:px-4">
       <GbaShell
         onUp={goPrev}
         onDown={goNext}
@@ -159,7 +165,7 @@ export default function App() {
         theme={theme}
         onToggleTheme={toggleTheme}
       >
-        <TopNav screen={screen} navigate={navigate} />
+        <TopNav screen={screen} navigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
         <div
           className={`screen-viewport ${flickering ? 'flicker' : ''}`}
           onPointerDown={onPointerDown}
