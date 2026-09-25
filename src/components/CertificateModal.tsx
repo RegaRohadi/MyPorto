@@ -82,14 +82,15 @@ export function CertificateModal({
         </div>
 
         <div className="p-4">
-          {cert.href ? (
-            <iframe
-              key={cert.href}
-              src={`${cert.href}#view=Fit&toolbar=0&navpanes=0&statusbar=0`}
-              title={`${cert.title} certificate document`}
-              className="cert-frame"
-              loading="lazy"
-            />
+          {cert.preview ? (
+            <div className="cert-frame">
+              <img
+                src={cert.preview}
+                alt={`${cert.title} certificate`}
+                className="cert-image"
+                decoding="async"
+              />
+            </div>
           ) : (
             <div className="card p-6 text-center">
               <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
@@ -109,7 +110,7 @@ export function CertificateModal({
                 target="_blank"
                 rel="noreferrer"
               >
-                OPEN IN NEW TAB
+                OPEN PDF
               </a>
             )}
             {cert.url ? (

@@ -5,7 +5,8 @@ const MENU: { label: string; i: number }[] = [
   { label: 'SKILLS', i: 2 },
   { label: 'PROJECTS', i: 3 },
   { label: 'CERTIFICATES', i: 4 },
-  { label: 'CONTACT', i: 5 },
+  { label: 'ORGANIZATIONS', i: 5 },
+  { label: 'CONTACT', i: 6 },
 ]
 
 export function StartScreen({ onNavigate }: { onNavigate: (i: number) => void }) {

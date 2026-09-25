@@ -21,7 +21,7 @@ export function About({
   }, [active, register, onContact])
 
   return (
-    <div className="h-full overflow-y-auto px-6 py-6">
+    <div className="min-h-full px-6 py-6">
       <div className="w-full flex flex-col md:flex-row gap-8 items-start">
         <div className="shrink-0 mx-auto md:mx-0">
           <div className="card p-3">

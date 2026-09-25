@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pkkmb",
+    "title": "Koordinator General Affair",
+    "issuer": "PKKMB FTI UNS 2023",
+    "date": "2023",
+    "category": "Organization",
+    "file": "Sertif PKKMB.pdf",
+    "url": "",
+    "credentialId": "347/UN27.12.1/KM.05.01/2023"
+  },
+  {
+    "id": "himaster",
+    "title": "Anggota Bidang Pengembangan Sumber Daya Mahasiswa",
+    "issuer": "HIMASTER UNS",
+    "date": "2023",
+    "category": "Organization",
+    "file": "Sertif HIMASTER.pdf",
+    "url": "",
+    "credentialId": "269/UN27.12.3.1/PK.01.03/2023"
+  },
+  {
+    "id": "pingfest",
+    "title": "Staff General Affair",
+    "issuer": "PINGFEST HIMASTER UNS 2023",
+    "date": "02 Okt 2023",
+    "category": "Organization",
+    "file": "Sertif P!NGFEST.pdf",
+    "url": "",
+    "credentialId": "158/UN27.12/KM.05.03/2023"
+  }
+]

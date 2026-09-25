@@ -1,4 +1,4 @@
-import { Component, useCallback, useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
+import { Component, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { DesktopDecor } from './components/DesktopDecor'
 import { GbaShell } from './components/GbaShell'
 import { TopNav, type SectionId } from './components/TopNav'
@@ -7,11 +7,20 @@ import { About } from './components/About'
 import { Skills } from './components/Skills'
 import { Projects } from './components/Projects'
 import { Certificates } from './components/Certificates'
+import { Organizations } from './components/Organizations'
 import { Contact } from './components/Contact'
 import { usePrefs } from './hooks/usePrefs'
 import type { ActionSet } from './components/actions'
 
-const ORDER: SectionId[] = ['start', 'about', 'skills', 'projects', 'certificates', 'contact']
+const ORDER: SectionId[] = [
+  'start',
+  'about',
+  'skills',
+  'projects',
+  'certificates',
+  'organizations',
+  'contact',
+]
 
 function indexFromHash(): number {
   const h = window.location.hash.replace('#', '')
@@ -80,7 +89,6 @@ export default function App() {
   const [screen, setScreen] = useState<number>(indexFromHash)
   const [flickering, setFlickering] = useState(false)
 
-  const pointerStart = useRef<{ x: number; y: number } | null>(null)
   const flickerTimer = useRef<number | undefined>(undefined)
 
   const primaryRef = useRef<(() => void) | null>(null)
@@ -138,21 +146,6 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey)
   }, [goPrev, goNext])
 
-  const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType === 'mouse') return
-    pointerStart.current = { x: e.clientX, y: e.clientY }
-  }
-  const onPointerUp = (e: PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType === 'mouse' || !pointerStart.current) return
-    const dx = e.clientX - pointerStart.current.x
-    const dy = e.clientY - pointerStart.current.y
-    pointerStart.current = null
-    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 50) {
-      if (dy < 0) goNext()
-      else goPrev()
-    }
-  }
-
   return (
     <div className="app-frame min-h-[100dvh] py-2 px-2 sm:py-4 sm:px-4">
       <DesktopDecor />
@@ -168,18 +161,13 @@ export default function App() {
         onToggleTheme={toggleTheme}
       >
         <TopNav screen={screen} navigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
-        <div
-          className={`screen-viewport ${flickering ? 'flicker' : ''}`}
-          onPointerDown={onPointerDown}
-          onPointerUp={onPointerUp}
-          onPointerCancel={() => (pointerStart.current = null)}
-        >
+        <div className={`screen-viewport ${flickering ? 'flicker' : ''}`}>
           <div className="screen-track" style={{ transform: `translateY(-${screen * 100}%)` }}>
             <Page label="Start screen" index={0} screen={screen}>
               <StartScreen onNavigate={navigate} />
             </Page>
             <Page label="About me" index={1} screen={screen}>
-              <About active={screen === 1} register={register} onContact={() => navigate(5)} />
+              <About active={screen === 1} register={register} onContact={() => navigate(6)} />
             </Page>
             <Page label="Skills" index={2} screen={screen}>
               <Skills active={screen === 2} />
@@ -190,8 +178,11 @@ export default function App() {
             <Page label="Certificates" index={4} screen={screen}>
               <Certificates active={screen === 4} register={register} />
             </Page>
-            <Page label="Contact" index={5} screen={screen}>
-              <Contact active={screen === 5} register={register} />
+            <Page label="Organizations" index={5} screen={screen}>
+              <Organizations active={screen === 5} register={register} />
+            </Page>
+            <Page label="Contact" index={6} screen={screen}>
+              <Contact active={screen === 6} register={register} />
             </Page>
           </div>
         </div>

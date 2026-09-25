@@ -29,7 +29,7 @@ export function Projects({ active, register }: { active: boolean; register: Regi
   const open = openId ? PROJECTS.find((p) => p.id === openId) : null
 
   return (
-    <div className="h-full overflow-y-auto px-6 py-4 flex flex-col">
+    <div className="min-h-full px-6 py-4 flex flex-col">
       <div className="w-full">
         <SectionHeader title="PROJECTS" meta="LEVEL SELECT" active={active} />
       </div>

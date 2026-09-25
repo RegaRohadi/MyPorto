@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { CERTIFICATES } from '../data'
+import { ORGANIZATIONS } from '../data'
 import { AWARD_ART } from '../data/art'
 import { Carousel, type CarouselHandle } from './Carousel'
 import { CertificateModal } from './CertificateModal'
@@ -7,7 +7,7 @@ import { PixelArt } from './PixelArt'
 import { SectionHeader } from './SectionHeader'
 import type { RegisterFn } from './actions'
 
-export function Certificates({ active, register }: { active: boolean; register: RegisterFn }) {
+export function Organizations({ active, register }: { active: boolean; register: RegisterFn }) {
   const carouselRef = useRef<CarouselHandle>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [openId, setOpenId] = useState<string | null>(null)
@@ -20,48 +20,48 @@ export function Certificates({ active, register }: { active: boolean; register: 
     register({
       left: () => carouselRef.current?.scrollPrev(),
       right: () => carouselRef.current?.scrollNext(),
-      primary: () => setOpenId(CERTIFICATES[activeIndex]?.id ?? null),
+      primary: () => setOpenId(ORGANIZATIONS[activeIndex]?.id ?? null),
     })
     return () => register(null)
   }, [active, register, activeIndex])
 
-  const open = openId ? CERTIFICATES.find((c) => c.id === openId) : null
+  const open = openId ? ORGANIZATIONS.find((o) => o.id === openId) : null
 
   return (
     <div className="min-h-full px-6 py-4 flex flex-col">
       <div className="w-full">
         <SectionHeader
-          title="CERTIFICATES"
-          meta={`${CERTIFICATES.length} EARNED`}
+          title="ORGANIZATIONS"
+          meta={`${ORGANIZATIONS.length} ROLES`}
           active={active}
         />
       </div>
 
       <div className="w-full mt-3 flex-1">
-        {CERTIFICATES.length === 0 ? (
+        {ORGANIZATIONS.length === 0 ? (
           <div className="card p-6 text-center">
             <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
-              NO TROPHIES YET
+              NO EXPERIENCE YET
             </p>
             <p className="text-sm mt-2" style={{ color: 'var(--gba-dim)' }}>
-              New certificates are being verified — check back soon.
+              Organization experience is being added — check back soon.
             </p>
           </div>
         ) : (
           <Carousel
             ref={carouselRef}
-            label="Certificates"
-            hintKey="gba-certs-hint"
+            label="Organization experience"
+            hintKey="gba-orgs-hint"
             onIndexChange={setActiveIndex}
           >
-          {CERTIFICATES.map((c, i) => {
+          {ORGANIZATIONS.map((o, i) => {
             const near = Math.abs(i - activeIndex) <= 1
             return (
-              <article key={c.id} className="card h-full flex flex-col p-3">
+              <article key={o.id} className="card h-full flex flex-col p-3">
                 <div className="cert-thumb" aria-hidden="true">
-                  {c.preview && near ? (
+                  {o.preview && near ? (
                     <img
-                      src={c.preview}
+                      src={o.preview}
                       alt=""
                       className="cert-thumb__img"
                       loading="lazy"
@@ -75,22 +75,22 @@ export function Certificates({ active, register }: { active: boolean; register: 
                 </div>
 
                 <div className="flex flex-col items-center text-center mt-3">
-                  <h3 className="pixel text-sm">{c.title}</h3>
+                  <h3 className="pixel text-sm">{o.title}</h3>
                   <p className="mt-2 text-sm font-semibold" style={{ color: 'var(--gba-em)' }}>
-                    {c.issuer}
+                    {o.issuer}
                   </p>
                   <p className="mt-1 text-xs" style={{ color: 'var(--gba-dim)' }}>
-                    {c.date} · {c.category}
+                    {o.date} · {o.category}
                   </p>
-                  {c.credentialId && (
+                  {o.credentialId && (
                     <p className="mt-1 text-[11px] break-all" style={{ color: 'var(--gba-muted)' }}>
-                      ID {c.credentialId}
+                      ID {o.credentialId}
                     </p>
                   )}
                   <button
                     type="button"
                     className="btn btn-accent btn-sm focus-ring mt-3"
-                    onClick={() => setOpenId(c.id)}
+                    onClick={() => setOpenId(o.id)}
                   >
                     VIEW CERTIFICATE
                   </button>

@@ -4,7 +4,7 @@ import { SkillIcon } from './SkillIcon'
 
 export function Skills({ active }: { active?: boolean }) {
   return (
-    <div className="h-full overflow-y-auto px-6 py-6">
+    <div className="min-h-full px-6 py-6">
       <div className="w-full">
         <SectionHeader title="SKILLS" meta="LOADOUT" active={active} />
         <div className="grid skills-grid mt-4">

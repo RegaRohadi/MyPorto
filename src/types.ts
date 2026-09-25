@@ -22,6 +22,8 @@ export interface Certificate {
   credentialId?: string
   /** Resolved asset URL of the document, filled in by the data layer. */
   href: string
+  /** Resolved asset URL of the preview image, filled in by the data layer. */
+  preview: string
 }
 
 export interface SkillGroup {

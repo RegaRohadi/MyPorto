@@ -168,10 +168,10 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
 .nav-icon-btn[aria-pressed="true"]{ border-color:var(--gba-accent); box-shadow: 0 0 0 1px var(--gba-accent); color:var(--gba-em); }
 
 /* ---- pager ---- */
-.screen-viewport{ flex:1 1 auto; position:relative; overflow:hidden; touch-action:none; min-height:0; }
+.screen-viewport{ flex:1 1 auto; position:relative; overflow:hidden; min-height:0; }
 .screen-track{ height:100%; transition: transform 260ms cubic-bezier(.2,.8,.2,1); }
 .reduce .screen-track{ transition: transform 200ms ease; }
-.screen-page{ height:100%; overflow-y:auto; overscroll-behavior:contain; }
+.screen-page{ height:100%; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
 
 /* ---- typography helpers ---- */
 .h-display{ font-family:"Press Start 2P", monospace; line-height:1.35; letter-spacing:.01em; overflow-wrap:break-word; }
@@ -308,7 +308,7 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
 
 /* ---- carousel ---- */
 .embla{ overflow:hidden; width:100%; }
-.embla__container{ display:flex; touch-action:none; gap:16px; }
+.embla__container{ display:flex; touch-action:pan-y; gap:16px; }
 .embla__slide{ flex:0 0 100%; min-width:0; }
 @media(min-width:768px){ .embla__slide{ flex:0 0 78% } }
 @media(min-width:1024px){ .embla__slide{ flex:0 0 60% } }
@@ -408,22 +408,21 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
   position:relative;
   display:block;
   width:100%;
-  max-width:min(100%, 560px);
-  max-height:40vh;
+  max-width:280px;
+  height:auto;
+  aspect-ratio:1600 / 1132;
   margin-inline:auto;
-  aspect-ratio:842 / 595;
   border:1px solid var(--gba-border);
   border-radius:8px;
   overflow:hidden;
   background:#fff;
 }
-.cert-thumb__frame{
+.cert-thumb__img{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  border:0;
-  background:#fff;
+  object-fit:cover;
   pointer-events:none;
 }
 .cert-thumb__empty{
@@ -436,14 +435,22 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
 }
 .cert-frame{
   display:block;
-  width:100%;
-  height:64vh;
+  width:min(100%, 520px);
+  margin-inline:auto;
   border:1px solid var(--gba-border);
   border-radius:8px;
+  overflow:hidden;
   background:#fff;
 }
-@media(max-width:640px){
-  .cert-frame{ height:52vh; }
+.cert-image{
+  display:block;
+  width:100%;
+  height:auto;
+  background:#fff;
+}
+/* Desktop: fit the card so the carousel info stays visible without scrolling. */
+@media (min-width:1024px){
+  .cert-thumb{ width:auto; max-width:100%; height:clamp(96px, calc(100dvh - 379px), 300px); }
 }
 
 /* ---- misc ---- */

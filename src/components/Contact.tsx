@@ -44,7 +44,7 @@ export function Contact({ active, register }: { active: boolean; register: Regis
   }, [active, register])
 
   return (
-    <div className="h-full overflow-y-auto px-6 py-6">
+    <div className="min-h-full px-6 py-6">
       <div className="w-full">
         <SectionHeader title="CONTACT" active={active} />
         <p className="body-copy mt-3" style={{ color: 'var(--gba-dim)' }}>

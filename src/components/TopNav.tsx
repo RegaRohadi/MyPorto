@@ -1,6 +1,13 @@
 import { MoonIcon, SunIcon } from './icons'
 
-export type SectionId = 'start' | 'about' | 'skills' | 'projects' | 'certificates' | 'contact'
+export type SectionId =
+  | 'start'
+  | 'about'
+  | 'skills'
+  | 'projects'
+  | 'certificates'
+  | 'organizations'
+  | 'contact'
 
 const ITEMS: { id: SectionId; label: string }[] = [
   { id: 'start', label: 'START' },
@@ -8,6 +15,7 @@ const ITEMS: { id: SectionId; label: string }[] = [
   { id: 'skills', label: 'SKILLS' },
   { id: 'projects', label: 'PROJECTS' },
   { id: 'certificates', label: 'CERTS' },
+  { id: 'organizations', label: 'ORGS' },
   { id: 'contact', label: 'CONTACT' },
 ]
 
