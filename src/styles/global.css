@@ -537,3 +537,31 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
 @keyframes dd-bob{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-16px) } }
 @keyframes dd-scroll{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
 .reduce .dd-float, .reduce .dd-marquee__track{ animation:none; }
+
+/* ---- start screen: scale content to the viewport ---- */
+.start-title{ font-size:20px; }
+.start-role{ font-size:14px; }
+.start-press{ font-size:12px; }
+.start-hint{ font-size:12px; }
+.start-menu{ max-width:24rem; }
+
+@media(min-width:640px){
+  .start-title{ font-size:24px; }
+}
+
+/* desktop uses the full window, so grow the hero to match it */
+@media(min-width:1024px){
+  .start-screen{ gap:clamp(16px, 2.4vh, 32px); }
+  .start-title{ font-size:clamp(30px, 4vw, 56px); }
+  .start-role{ font-size:clamp(14px, 1.4vw, 22px); }
+  .start-press{ font-size:clamp(12px, 1vw, 16px); }
+  .start-hint{ font-size:clamp(12px, 0.95vw, 15px); }
+  .start-menu{
+    max-width:clamp(360px, 36vw, 620px);
+    gap:clamp(8px, 1.1vh, 14px);
+  }
+  .start-menu .btn{
+    font-size:clamp(11px, 1vw, 16px);
+    padding:clamp(9px, 0.9vh, 14px) clamp(14px, 1.2vw, 22px);
+  }
+}
