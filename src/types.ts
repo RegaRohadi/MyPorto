@@ -15,7 +15,13 @@ export interface Certificate {
   issuer: string
   date: string
   category: string
+  /** Filename of the certificate document inside /docs. */
+  file: string
+  /** External verification link, if the issuer provides one. */
   url: string
+  credentialId?: string
+  /** Resolved asset URL of the document, filled in by the data layer. */
+  href: string
 }
 
 export interface SkillGroup {

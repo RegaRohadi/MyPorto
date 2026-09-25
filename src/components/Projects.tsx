@@ -34,7 +34,7 @@ export function Projects({ active, register }: { active: boolean; register: Regi
         <SectionHeader title="PROJECTS" meta="LEVEL SELECT" active={active} />
       </div>
 
-      <div className="w-full mt-3 flex-1">
+      <div className="w-full mt-3 flex-1 lg:flex lg:items-center">
         {PROJECTS.length === 0 ? (
           <div className="card p-6 text-center">
             <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
@@ -55,7 +55,7 @@ export function Projects({ active, register }: { active: boolean; register: Regi
           {PROJECTS.map((p) => (
             <article
               key={p.id}
-              className="card flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 p-3 sm:p-5 sm:min-h-[220px]"
+              className="card flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 p-3 sm:p-5 sm:min-h-[clamp(260px,52vh,660px)]"
             >
               <div className="shrink-0">
                 <div
@@ -67,12 +67,12 @@ export function Projects({ active, register }: { active: boolean; register: Regi
                       src={p.thumb}
                       alt={`${p.title} logo`}
                       loading="lazy"
-                      className="w-full h-32 sm:w-44 sm:h-44 object-contain"
+                      className="w-full h-32 sm:h-[clamp(160px,30vh,360px)] sm:w-[clamp(160px,30vh,360px)] object-contain"
                     />
                   ) : (
                     <PixelArt
                       rows={PROJECT_ART[p.id] ?? []}
-                      className="w-full h-32 sm:w-44 sm:h-44"
+                      className="w-full h-32 sm:h-[clamp(160px,30vh,360px)] sm:w-[clamp(160px,30vh,360px)]"
                     />
                   )}
                 </div>

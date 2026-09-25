@@ -1,26 +1,102 @@
 [
   {
-    "id": "fe-dev",
-    "title": "Frontend Development",
-    "issuer": "Dicoding",
-    "date": "2025",
-    "category": "Web",
-    "url": "#"
+    "id": "devcert-android",
+    "title": "Dev Certification for Android (DCA)",
+    "issuer": "Dev.id",
+    "date": "09 Mei 2025",
+    "category": "Professional",
+    "file": "Devcert_Android_Certificate.pdf",
+    "url": "https://dev.id/certificate/verify/QZ0JZMMWE2",
+    "credentialId": "QZ0JZMMWE2"
   },
   {
-    "id": "js-algo",
-    "title": "JavaScript Algorithms & Data Structures",
-    "issuer": "freeCodeCamp",
-    "date": "2024",
-    "category": "Algorithms",
-    "url": "#"
+    "id": "android-expert",
+    "title": "Menjadi Android Developer Expert",
+    "issuer": "Dicoding Indonesia",
+    "date": "11 Apr 2025",
+    "category": "Android",
+    "file": "sertifikat_expert_android.pdf",
+    "url": "https://www.dicoding.com/certificates/MEPJQGN3QX3V",
+    "credentialId": "MEPJQGN3QX3V"
   },
   {
-    "id": "responsive",
-    "title": "Responsive Web Design",
-    "issuer": "freeCodeCamp",
-    "date": "2024",
-    "category": "Design",
-    "url": "#"
+    "id": "android-compose",
+    "title": "Belajar Membuat Aplikasi Android dengan Jetpack Compose",
+    "issuer": "Dicoding Indonesia",
+    "date": "05 Apr 2025",
+    "category": "Android",
+    "file": "sertifikat_android_compose.pdf",
+    "url": "https://www.dicoding.com/certificates/MRZMNO0NNPYQ",
+    "credentialId": "MRZMNO0NNPYQ"
+  },
+  {
+    "id": "bangkit-2024",
+    "title": "Bangkit Academy 2024 Batch 2 - Mobile Development",
+    "issuer": "Bangkit Academy (Google, GoTo, Traveloka)",
+    "date": "10 Jan 2025",
+    "category": "Academy",
+    "file": "[Bangkit 2024 Batch 2] Certificate - A312B4KY3244.pdf",
+    "url": "",
+    "credentialId": "BA24/GRAD/XXV-01/A312B4KY3244"
+  },
+  {
+    "id": "android-intermediate",
+    "title": "Belajar Pengembangan Aplikasi Android Intermediate",
+    "issuer": "Dicoding Indonesia",
+    "date": "20 Des 2024",
+    "category": "Android",
+    "file": "sertifikat_intermediate_android.pdf",
+    "url": "https://www.dicoding.com/certificates/QLZ9VLNVEX5D",
+    "credentialId": "QLZ9VLNVEX5D"
+  },
+  {
+    "id": "ml-applied",
+    "title": "Belajar Penerapan Machine Learning untuk Android",
+    "issuer": "Dicoding Indonesia",
+    "date": "12 Nov 2024",
+    "category": "Machine Learning",
+    "file": "sertifikat_applied_ML.pdf",
+    "url": "https://www.dicoding.com/certificates/MRZMYVW5NZYQ",
+    "credentialId": "MRZMYVW5NZYQ"
+  },
+  {
+    "id": "android-fundamental",
+    "title": "Belajar Fundamental Aplikasi Android",
+    "issuer": "Dicoding Indonesia",
+    "date": "29 Okt 2024",
+    "category": "Android",
+    "file": "sertifikat_fundamental_android.pdf",
+    "url": "https://www.dicoding.com/certificates/JLX14464GX72",
+    "credentialId": "JLX14464GX72"
+  },
+  {
+    "id": "ai-basic",
+    "title": "Belajar Dasar AI",
+    "issuer": "Dicoding Indonesia",
+    "date": "29 Okt 2024",
+    "category": "AI",
+    "file": "sertifikat_basic_AI.pdf",
+    "url": "https://www.dicoding.com/certificates/L4PQ55NN4ZO1",
+    "credentialId": "L4PQ55NN4ZO1"
+  },
+  {
+    "id": "android-basic",
+    "title": "Belajar Membuat Aplikasi Android untuk Pemula",
+    "issuer": "Dicoding Indonesia",
+    "date": "05 Okt 2024",
+    "category": "Android",
+    "file": "sertifikat_basic_android.pdf",
+    "url": "https://www.dicoding.com/certificates/98XW54N4LPM3",
+    "credentialId": "98XW54N4LPM3"
+  },
+  {
+    "id": "kotlin-basic",
+    "title": "Memulai Pemrograman dengan Kotlin",
+    "issuer": "Dicoding Indonesia",
+    "date": "24 Sep 2024",
+    "category": "Kotlin",
+    "file": "sertifikat_basic_kotlin.pdf",
+    "url": "https://www.dicoding.com/certificates/GRX54GW4KP0M",
+    "credentialId": "GRX54GW4KP0M"
   }
 ]
