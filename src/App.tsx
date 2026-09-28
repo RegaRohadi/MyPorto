@@ -101,19 +101,29 @@ export default function App() {
     rightRef.current = a?.right ?? null
   }, [])
 
+  const flash = useCallback(() => {
+    if (reduce) return
+    setFlickering(true)
+    window.clearTimeout(flickerTimer.current)
+    flickerTimer.current = window.setTimeout(() => setFlickering(false), 180)
+  }, [reduce])
+
   const navigate = useCallback(
     (i: number) => {
       const next = Math.max(0, Math.min(ORDER.length - 1, i))
       setScreen(next)
       window.history.replaceState(null, '', `#${ORDER[next]}`)
-      if (!reduce) {
-        setFlickering(true)
-        window.clearTimeout(flickerTimer.current)
-        flickerTimer.current = window.setTimeout(() => setFlickering(false), 180)
-      }
+      flash()
     },
-    [reduce],
+    [flash],
   )
+
+  const toggleThemeWithFlash = useCallback(() => {
+    toggleTheme()
+    flash()
+  }, [toggleTheme, flash])
+
+  useEffect(() => () => window.clearTimeout(flickerTimer.current), [])
 
   const goPrev = useCallback(() => navigate(screen - 1), [navigate, screen])
   const goNext = useCallback(() => navigate(screen + 1), [navigate, screen])
@@ -158,13 +168,13 @@ export default function App() {
         onB={() => navigate(0)}
         onStart={() => navigate(0)}
         theme={theme}
-        onToggleTheme={toggleTheme}
+        onToggleTheme={toggleThemeWithFlash}
       >
-        <TopNav screen={screen} navigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
+        <TopNav screen={screen} navigate={navigate} theme={theme} onToggleTheme={toggleThemeWithFlash} />
         <div className={`screen-viewport ${flickering ? 'flicker' : ''}`}>
           <div className="screen-track" style={{ transform: `translateY(-${screen * 100}%)` }}>
             <Page label="Start screen" index={0} screen={screen}>
-              <StartScreen onNavigate={navigate} />
+              <StartScreen active={screen === 0} onNavigate={navigate} />
             </Page>
             <Page label="About me" index={1} screen={screen}>
               <About active={screen === 1} register={register} onContact={() => navigate(6)} />

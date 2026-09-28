@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { CERTIFICATES } from '../data'
 import { AWARD_ART } from '../data/art'
+import { d } from '../lib/motion'
 import { Carousel, type CarouselHandle } from './Carousel'
 import { CertificateModal } from './CertificateModal'
 import { PixelArt } from './PixelArt'
@@ -37,7 +38,10 @@ export function Certificates({ active, register }: { active: boolean; register: 
         />
       </div>
 
-      <div className="w-full mt-3 flex-1">
+      <div
+        className={`w-full mt-3 flex-1 ${active ? 'm-rise' : ''}`}
+        style={d(80)}
+      >
         {CERTIFICATES.length === 0 ? (
           <div className="card p-6 text-center">
             <p className="pixel text-[10px]" style={{ color: 'var(--gba-em)' }}>
@@ -57,7 +61,7 @@ export function Certificates({ active, register }: { active: boolean; register: 
           {CERTIFICATES.map((c, i) => {
             const near = Math.abs(i - activeIndex) <= 1
             return (
-              <article key={c.id} className="card h-full flex flex-col p-3">
+              <article key={c.id} className="card card-hover h-full flex flex-col p-3">
                 <div className="cert-thumb" aria-hidden="true">
                   {c.preview && near ? (
                     <img

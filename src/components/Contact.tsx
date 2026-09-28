@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { PROFILE } from '../data'
+import { d } from '../lib/motion'
 import { CheckIcon, CopyIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 import { SectionHeader } from './SectionHeader'
 import type { RegisterFn } from './actions'
@@ -47,17 +48,24 @@ export function Contact({ active, register }: { active: boolean; register: Regis
     <div className="min-h-full px-6 py-6">
       <div className="w-full">
         <SectionHeader title="CONTACT" active={active} />
-        <p className="body-copy mt-3" style={{ color: 'var(--gba-dim)' }}>
+        <p
+          className={`body-copy mt-3 ${active ? 'm-rise' : ''}`}
+          style={{ color: 'var(--gba-dim)', ...d(80) }}
+        >
           Have a project or just want to say hi? Reach me through any of the channels below.
         </p>
 
-        <div className="card p-5 mt-6">
+        <div className={`card card-hover p-5 mt-6 ${active ? 'm-pop' : ''}`} style={d(160)}>
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
               <MailIcon className="w-5 h-5 shrink-0" style={{ color: 'var(--gba-hl)' }} />
               <span className="truncate font-medium">{PROFILE.contact.email}</span>
             </div>
-            <button type="button" className="btn btn-accent btn-sm focus-ring shrink-0" onClick={copy}>
+            <button
+              type="button"
+              className={`btn btn-accent btn-sm focus-ring shrink-0 ${copied ? 'copy-pop' : ''}`}
+              onClick={copy}
+            >
               {copied ? <CheckIcon className="w-4 h-4" /> : <CopyIcon className="w-4 h-4" />}
               {copied ? 'COPIED' : 'COPY'}
             </button>
@@ -83,7 +91,8 @@ export function Contact({ active, register }: { active: boolean; register: Regis
 
         <div className="grid gap-3 mt-4 sm:grid-cols-2">
           <a
-            className="card p-5 flex items-center gap-3 transition hover:opacity-90"
+            className={`card card-hover p-5 flex items-center gap-3 ${active ? 'm-rise' : ''}`}
+            style={d(300)}
             href={PROFILE.contact.github}
             target="_blank"
             rel="noreferrer"
@@ -92,7 +101,8 @@ export function Contact({ active, register }: { active: boolean; register: Regis
             <span className="font-medium">GitHub</span>
           </a>
           <a
-            className="card p-5 flex items-center gap-3 transition hover:opacity-90"
+            className={`card card-hover p-5 flex items-center gap-3 ${active ? 'm-rise' : ''}`}
+            style={d(380)}
             href={PROFILE.contact.linkedin}
             target="_blank"
             rel="noreferrer"

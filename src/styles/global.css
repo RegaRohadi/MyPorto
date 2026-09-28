@@ -169,7 +169,7 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
 
 /* ---- pager ---- */
 .screen-viewport{ flex:1 1 auto; position:relative; overflow:hidden; min-height:0; }
-.screen-track{ height:100%; transition: transform 260ms cubic-bezier(.2,.8,.2,1); }
+.screen-track{ height:100%; transition: transform 260ms cubic-bezier(.2,.8,.2,1); will-change:transform; }
 .reduce .screen-track{ transition: transform 200ms ease; }
 .screen-page{ height:100%; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
 
@@ -472,6 +472,184 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
 .reduce .bounce{ animation:none; }
 .glow-accent{ box-shadow: 0 0 0 1px var(--gba-accent), 0 0 18px color-mix(in srgb, var(--gba-accent) 35%, transparent), 0 4px 16px rgba(0,0,0,.2) }
 .focus-ring:focus-visible{ outline:2px solid var(--gba-accent); outline-offset:2px }
+
+/* ============================================================================
+   MOTION SYSTEM
+   Entrance primitives + interaction polish. Pair the `.m-*` classes with the
+   `d(ms)` helper (src/lib/motion.ts) to stagger siblings. Only transform,
+   opacity and filter animate, so nothing triggers layout. Every effect below
+   is switched off under `.reduce` at the bottom of this block.
+   ========================================================================== */
+@keyframes m-rise{ from{ opacity:0; transform:translateY(14px) } to{ opacity:1; transform:none } }
+@keyframes m-drop{ from{ opacity:0; transform:translateY(-12px) } to{ opacity:1; transform:none } }
+@keyframes m-right{ from{ opacity:0; transform:translateX(-18px) } to{ opacity:1; transform:none } }
+@keyframes m-pop{ from{ opacity:0; transform:scale(.94) } to{ opacity:1; transform:none } }
+@keyframes m-fade{ from{ opacity:0 } to{ opacity:1 } }
+@keyframes m-letter{ from{ opacity:0; transform:translateY(10px) scaleY(.45) } to{ opacity:1; transform:none } }
+.m-rise, .m-drop, .m-right, .m-pop, .m-fade, .m-letter{
+  animation-duration:460ms;
+  animation-timing-function:cubic-bezier(.22,1,.36,1);
+  animation-fill-mode:backwards;
+  animation-delay:var(--d,0ms);
+}
+.m-rise{ animation-name:m-rise }
+.m-drop{ animation-name:m-drop }
+.m-right{ animation-name:m-right }
+.m-pop{ animation-name:m-pop }
+.m-fade{ animation-name:m-fade }
+.m-letter{ animation-name:m-letter; display:inline-block; animation-duration:480ms }
+.title-word{ display:inline-block; white-space:nowrap }
+
+/* ---- interaction polish ---- */
+.card-hover{ transition: transform 180ms cubic-bezier(.22,1,.36,1), border-color 180ms, box-shadow 180ms }
+.card-hover:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb, var(--gba-hl) 70%, var(--gba-border));
+  box-shadow:0 16px 32px rgba(0,0,0,.34), 0 0 0 1px color-mix(in srgb, var(--gba-hl) 45%, transparent);
+}
+.btn{ position:relative; overflow:hidden }
+.btn-accent::after{
+  content:""; position:absolute; top:-30%; bottom:-30%; left:0; width:34%;
+  background:linear-gradient(105deg, transparent, rgba(255,255,255,.55), transparent);
+  transform:translateX(-220%) skewX(-18deg);
+  transition:transform 520ms ease;
+  pointer-events:none;
+}
+.btn-accent:hover::after{ transform:translateX(330%) skewX(-18deg) }
+.btn-ghost:hover:not(:active){
+  transform:translateY(-1px);
+  border-color:var(--gba-hl);
+  box-shadow:0 0 0 1px color-mix(in srgb, var(--gba-hl) 55%, transparent), 0 6px 16px rgba(0,0,0,.28);
+}
+.nav-tab{ position:relative; transition:color 140ms ease }
+.nav-tab::after{
+  content:""; position:absolute; left:6px; right:6px; bottom:2px; height:2px;
+  background:var(--gba-accent);
+  box-shadow:0 0 8px color-mix(in srgb, var(--gba-accent) 70%, transparent);
+  transform:scaleX(0);
+  transition:transform 180ms cubic-bezier(.22,1,.36,1);
+}
+.nav-tab:hover::after{ transform:scaleX(.45) }
+.nav-tab-active::after{ transform:scaleX(1); animation:tab-glow 2.6s ease-in-out 900ms infinite }
+@keyframes tab-glow{ 0%,100%{ opacity:1 } 50%{ opacity:.4 } }
+.stat{ transition:transform 160ms, border-color 160ms, box-shadow 160ms }
+.stat:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb, var(--gba-hl) 60%, var(--gba-border));
+}
+.skill-chip{ transition:transform 150ms, border-color 150ms, box-shadow 150ms }
+.skill-chip:hover{
+  transform:translateY(-2px);
+  border-color:var(--gba-hl);
+  box-shadow:0 0 0 1px color-mix(in srgb, var(--gba-hl) 55%, transparent), 0 6px 14px rgba(0,0,0,.25);
+}
+.skill-chip:hover .skill-icon{ animation:icon-pop 340ms cubic-bezier(.22,1,.36,1) }
+@keyframes icon-pop{ 0%{ transform:scale(1) } 45%{ transform:scale(1.18) rotate(-6deg) } 100%{ transform:scale(1) } }
+.avatar{ transition:transform 260ms cubic-bezier(.22,1,.36,1), box-shadow 260ms }
+.avatar:hover{
+  transform:scale(1.035) rotate(-.6deg);
+  box-shadow:0 0 0 1px var(--gba-hl), 0 0 22px color-mix(in srgb, var(--gba-hl) 45%, transparent);
+}
+.dpad-btn, .abtn, .startbtn, .shoulder, .arrow-btn, .mini-btn, .nav-icon-btn{
+  transition:transform 90ms, filter 90ms, border-color 120ms, color 120ms, box-shadow 150ms, opacity 150ms;
+}
+.dpad-btn:hover, .arrow-btn:hover:not(:disabled), .mini-btn:hover, .nav-icon-btn:hover,
+.startbtn:hover, .shoulder:hover{ border-color:var(--gba-hl); color:var(--gba-fg) }
+/* one slow attention pulse on the A button, like a blinking arcade prompt */
+.abtn-a{ animation:a-pulse 3.2s ease-in-out 1.4s infinite }
+@keyframes a-pulse{
+  0%,100%{ box-shadow:0 3px 0 rgba(0,0,0,.35), 0 8px 18px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.35) }
+  50%{ box-shadow:0 3px 0 rgba(0,0,0,.35), 0 8px 18px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.35), 0 0 0 7px color-mix(in srgb, var(--gba-accent) 16%, transparent), 0 0 18px color-mix(in srgb, var(--gba-accent) 50%, transparent) }
+}
+@keyframes copy-pop{ 0%{ transform:scale(1) } 45%{ transform:scale(1.1) } 100%{ transform:scale(1) } }
+.copy-pop{ animation:copy-pop 320ms cubic-bezier(.22,1,.36,1) }
+
+/* ---- carousel: lift the selected card, recede its neighbours ---- */
+.embla__slide{
+  opacity:.6;
+  transform:scale(.98);
+  transition:opacity 260ms ease, transform 260ms cubic-bezier(.22,1,.36,1);
+}
+.embla__slide--active{ opacity:1; transform:none }
+@keyframes counter-pop{ from{ opacity:0; transform:translateY(3px) } to{ opacity:1; transform:none } }
+.counter{ animation:counter-pop 200ms ease-out }
+
+/* ---- modal: CRT power-on in, quick collapse out ---- */
+@keyframes modal-in{ from{ opacity:0; transform:translateY(12px) scale(.97); filter:brightness(1.5) } to{ opacity:1; transform:none; filter:none } }
+@keyframes modal-out{ from{ opacity:1; transform:none } to{ opacity:0; transform:translateY(8px) scale(.98) } }
+@keyframes overlay-in{ from{ opacity:0 } to{ opacity:1 } }
+@keyframes overlay-out{ from{ opacity:1 } to{ opacity:0 } }
+.modal-overlay{ animation:overlay-in 200ms ease-out backwards }
+.modal{ animation:modal-in 280ms cubic-bezier(.22,1,.36,1) backwards }
+.modal-overlay--closing{ animation:overlay-out 170ms ease-in forwards }
+.modal-overlay--closing .modal{ animation:modal-out 170ms ease-in forwards }
+.modal-art, .modal .cert-frame{ animation:m-pop 380ms cubic-bezier(.22,1,.36,1) 100ms backwards }
+
+/* ---- start screen: floating collectibles ---- */
+.start-screen{ position:relative }
+.start-decor{ position:absolute; inset:0; overflow:hidden; pointer-events:none }
+.start-decor__icon{
+  position:absolute;
+  opacity:.45;
+  animation:float-y var(--dur, 6s) ease-in-out var(--d, 0ms) infinite;
+}
+@keyframes float-y{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-10px) } }
+.start-decor__icon--a{ top:12%; left:8%; width:26px; height:26px; --dur:6.2s; --d:0ms }
+.start-decor__icon--b{ top:18%; right:10%; width:30px; height:30px; --dur:7.4s; --d:-2.4s }
+.start-decor__icon--c{ top:48%; left:5%; width:18px; height:18px; --dur:5.6s; --d:-1.2s }
+.start-decor__icon--d{ bottom:24%; right:7%; width:34px; height:34px; --dur:8s; --d:-3.6s }
+.start-decor__icon--e{ bottom:10%; left:14%; width:28px; height:28px; --dur:6.8s; --d:-4.8s }
+@media(max-width:640px){
+  .start-decor__icon--d, .start-decor__icon--e{ display:none }
+  .start-decor__icon{ opacity:.35 }
+}
+
+/* ---- mobile device boot: the LCD powers on, then a slow scan sweep ---- */
+@keyframes crt-on{
+  0%{ opacity:0; transform:scaleY(.02); filter:brightness(3) }
+  45%{ opacity:1; transform:scaleY(.14) }
+  72%{ transform:scaleY(1.03) }
+  100%{ opacity:1; transform:none; filter:none }
+}
+@keyframes crt-sweep{ 0%{ transform:translateY(-110%) } 60%,100%{ transform:translateY(480%) } }
+@media (max-width:1023px){
+  .lcd{ animation:crt-on 560ms cubic-bezier(.2,.8,.2,1) 80ms backwards }
+  .lcd::before{
+    content:""; position:absolute; left:0; right:0; top:0; height:22%;
+    background:linear-gradient(180deg, transparent, rgba(255,255,255,.05), transparent);
+    transform:translateY(-110%);
+    animation:crt-sweep 7.5s linear 2.4s infinite;
+    pointer-events:none; z-index:39;
+  }
+}
+
+/* ---- desktop backdrop: slow ambient drift ---- */
+.dd-glow{ will-change:transform }
+.dd-glow--a{ animation:dd-drift-a 26s ease-in-out infinite alternate }
+.dd-glow--b{ animation:dd-drift-b 32s ease-in-out infinite alternate }
+@keyframes dd-drift-a{ from{ transform:translate3d(0,0,0) scale(1) } to{ transform:translate3d(70px,46px,0) scale(1.14) } }
+@keyframes dd-drift-b{ from{ transform:translate3d(0,0,0) scale(1.08) } to{ transform:translate3d(-56px,-44px,0) scale(1) } }
+.dd-watermark{ animation:dd-float 13s ease-in-out infinite }
+@keyframes dd-float{
+  0%,100%{ transform:translate(-50%,-50%) }
+  50%{ transform:translate(-50%,calc(-50% - 14px)) }
+}
+
+/* ---- reduced motion: keep the layout, drop the movement ---- */
+.reduce .m-rise, .reduce .m-drop, .reduce .m-right, .reduce .m-pop, .reduce .m-fade,
+.reduce .m-letter, .reduce .copy-pop, .reduce .counter, .reduce .abtn-a,
+.reduce .nav-tab-active::after, .reduce .skill-chip:hover .skill-icon,
+.reduce .start-decor__icon, .reduce .dd-glow--a, .reduce .dd-glow--b,
+.reduce .dd-watermark, .reduce .modal, .reduce .modal-overlay,
+.reduce .modal-overlay--closing, .reduce .modal-overlay--closing .modal,
+.reduce .modal-art, .reduce .modal .cert-frame, .reduce .lcd, .reduce .lcd::before{
+  animation:none;
+}
+.reduce .card-hover:hover, .reduce .stat:hover, .reduce .skill-chip:hover,
+.reduce .btn-ghost:hover:not(:active), .reduce .avatar:hover{ transform:none }
+.reduce .embla__slide{ opacity:1; transform:none; transition:none }
+.reduce .nav-tab::after{ transition:none }
+.reduce .btn-accent::after{ display:none }
 
 @media(max-width:640px){
   .gba-shell{ border-radius:18px; padding:10px 10px 14px; }

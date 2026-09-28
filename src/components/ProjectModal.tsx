@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import type { Project } from '../types'
 import { PROJECT_ART } from '../data/art'
+import { useCloseAnimation } from '../hooks/useCloseAnimation'
 import { PixelArt } from './PixelArt'
 import { SkillIcon } from './SkillIcon'
 import { XIcon } from './icons'
@@ -12,6 +13,7 @@ const FOCUSABLE =
 export function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const prevFocus = useRef<Element | null>(null)
+  const { closing, requestClose } = useCloseAnimation(onClose)
 
   useEffect(() => {
     prevFocus.current = document.activeElement
@@ -22,7 +24,7 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose()
+        requestClose()
         return
       }
       if (e.key !== 'Tab' || !dialog) return
@@ -49,10 +51,14 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
       document.body.style.overflow = prevOverflow
       if (prevFocus.current instanceof HTMLElement) prevFocus.current.focus()
     }
-  }, [onClose])
+  }, [requestClose])
 
   return createPortal(
-    <div className="modal-overlay" onClick={onClose} role="presentation">
+    <div
+      className={`modal-overlay ${closing ? 'modal-overlay--closing' : ''}`}
+      onClick={requestClose}
+      role="presentation"
+    >
         <div
           ref={dialogRef}
           className="modal"
@@ -67,13 +73,13 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
           style={{ borderBottom: '2px solid var(--gba-border)' }}
         >
           <h3 className="h-section">{project.title}</h3>
-          <button type="button" className="arrow-btn focus-ring" onClick={onClose} aria-label="Close">
+          <button type="button" className="arrow-btn focus-ring" onClick={requestClose} aria-label="Close">
             <XIcon className="w-4 h-4" />
           </button>
         </div>
         <div className="p-4">
           <div
-            className="rounded-lg overflow-hidden flex items-center justify-center"
+            className="modal-art rounded-lg overflow-hidden flex items-center justify-center"
             style={{ border: '1px solid var(--gba-border)', background: 'var(--gba-card-2)' }}
           >
             {project.thumb ? (

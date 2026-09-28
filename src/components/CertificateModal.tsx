@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import type { Certificate } from '../types'
+import { useCloseAnimation } from '../hooks/useCloseAnimation'
 import { XIcon } from './icons'
 
 const FOCUSABLE =
@@ -15,6 +16,7 @@ export function CertificateModal({
 }) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const prevFocus = useRef<Element | null>(null)
+  const { closing, requestClose } = useCloseAnimation(onClose)
 
   useEffect(() => {
     prevFocus.current = document.activeElement
@@ -25,7 +27,7 @@ export function CertificateModal({
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose()
+        requestClose()
         return
       }
       if (e.key !== 'Tab' || !dialog) return
@@ -52,10 +54,14 @@ export function CertificateModal({
       document.body.style.overflow = prevOverflow
       if (prevFocus.current instanceof HTMLElement) prevFocus.current.focus()
     }
-  }, [onClose])
+  }, [requestClose])
 
   return createPortal(
-    <div className="modal-overlay" onClick={onClose} role="presentation">
+    <div
+      className={`modal-overlay ${closing ? 'modal-overlay--closing' : ''}`}
+      onClick={requestClose}
+      role="presentation"
+    >
       <div
         ref={dialogRef}
         className="modal cert-modal"
@@ -76,7 +82,7 @@ export function CertificateModal({
               {cert.credentialId ? ` · ID ${cert.credentialId}` : ''}
             </p>
           </div>
-          <button type="button" className="arrow-btn focus-ring" onClick={onClose} aria-label="Close">
+          <button type="button" className="arrow-btn focus-ring" onClick={requestClose} aria-label="Close">
             <XIcon className="w-4 h-4" />
           </button>
         </div>

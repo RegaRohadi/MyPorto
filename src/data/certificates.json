@@ -1,5 +1,25 @@
 [
   {
+    "id": "manajemen-proyek",
+    "title": "Belajar Dasar Manajemen Proyek",
+    "issuer": "Dicoding Indonesia",
+    "date": "28 Sep 2026",
+    "category": "Management",
+    "file": "sertifikat_course_manajemen_project.pdf",
+    "url": "https://www.dicoding.com/certificates/72ZDMY09QZYW",
+    "credentialId": "72ZDMY09QZYW"
+  },
+  {
+    "id": "solid-principles",
+    "title": "Belajar Prinsip Pemrograman SOLID",
+    "issuer": "Dicoding Indonesia",
+    "date": "27 Sep 2026",
+    "category": "Programming",
+    "file": "sertifikat_course_pemrograman_SOLID.pdf",
+    "url": "https://www.dicoding.com/certificates/NVP7W7KE4ZR0",
+    "credentialId": "NVP7W7KE4ZR0"
+  },
+  {
     "id": "devcert-android",
     "title": "Dev Certification for Android (DCA)",
     "issuer": "Dev.id",

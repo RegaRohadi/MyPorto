@@ -118,7 +118,10 @@ export const Carousel = forwardRef<CarouselHandle, Props>(function Carousel(
       <div className={`embla ${hint ? 'nudge' : ''} ${bounce ? 'bounce' : ''}`} ref={emblaRef}>
         <div className="embla__container">
           {Children.map(children, (child, i) => (
-            <div className="embla__slide" key={i}>
+            <div
+              className={`embla__slide ${i === index ? 'embla__slide--active' : ''}`}
+              key={i}
+            >
               {child}
             </div>
           ))}
@@ -164,7 +167,7 @@ export const Carousel = forwardRef<CarouselHandle, Props>(function Carousel(
           </button>
         </div>
       )}
-      <div className="counter pixel">
+      <div className="counter pixel" key={index}>
         {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
       </div>
     </div>
