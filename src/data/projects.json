@@ -6,7 +6,7 @@
     "tagline": "Personal reading tracker ",
     "thumb": "/logos/trackread.png",
     "stack": ["Vue", "TypeScript", "Laravel", "Tailwind"],
-    "links": { "live": "https://trackread.regazgaz.online", "github": "https://github.com/RegaRohadi/TrackRead_Front-end" },
+    "links": { "live": "https://trackread.regazgaz.online", "github": "https://github.com/RegaRohadi/TrackRead" },
     "detail": "Role: Frontend lead. Challenge: dense data had to stay scannable in a retro theme. Solution: inventory-style metric cards + minimal charts. Result: loads in <1.2s, demo used by 3 indie studios."
   },
   {
