@@ -31,7 +31,8 @@
         "Vite",
         "React-Native",
         "Laravel",
-        "Vue"
+        "Vue",
+        "FastAPI"
       ]
     },
     {
@@ -45,8 +46,8 @@
   ],
   "stats": [
     {
-      "label": "Experience",
-      "value": "4 yrs"
+      "label": "Cum Laude",
+      "value": "3.74 GPA"
     },
     {
       "label": "Level",

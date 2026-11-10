@@ -15,6 +15,8 @@ export interface Certificate {
   issuer: string
   date: string
   category: string
+  /** Short description of what the certificate covers. */
+  summary?: string
   /** Filename of the certificate document inside /docs. */
   file: string
   /** External verification link, if the issuer provides one. */

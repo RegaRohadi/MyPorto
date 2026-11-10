@@ -1,5 +1,16 @@
 [
   {
+    "id": "devops-basic",
+    "title": "Belajar Dasar-Dasar DevOps",
+    "issuer": "Dicoding Indonesia",
+    "date": "20 Okt 2026",
+    "category": "DevOps",
+    "file": "sertifikat_dasar_devops.pdf",
+    "url": "https://www.dicoding.com/certificates/98XW85WY0PM3",
+    "credentialId": "98XW85WY0PM3",
+    "summary": "Membahas budaya dan praktik DevOps: kolaborasi tim, otomatisasi alur kerja, CI/CD, serta monitoring dan feedback untuk rilis perangkat lunak yang lebih cepat dan stabil."
+  },
+  {
     "id": "manajemen-proyek",
     "title": "Belajar Dasar Manajemen Proyek",
     "issuer": "Dicoding Indonesia",
@@ -7,7 +18,8 @@
     "category": "Management",
     "file": "sertifikat_course_manajemen_project.pdf",
     "url": "https://www.dicoding.com/certificates/72ZDMY09QZYW",
-    "credentialId": "72ZDMY09QZYW"
+    "credentialId": "72ZDMY09QZYW",
+    "summary": "Mencakup dasar pengelolaan proyek—lingkup, jadwal, anggaran, risiko, dan komunikasi stakeholder—serta penerapan metode Waterfall dan Agile."
   },
   {
     "id": "solid-principles",
@@ -17,7 +29,19 @@
     "category": "Programming",
     "file": "sertifikat_course_pemrograman_SOLID.pdf",
     "url": "https://www.dicoding.com/certificates/NVP7W7KE4ZR0",
-    "credentialId": "NVP7W7KE4ZR0"
+    "credentialId": "NVP7W7KE4ZR0",
+    "summary": "Menjelaskan lima prinsip SOLID dan penerapannya pada kode berorientasi objek agar aplikasi lebih modular, mudah diuji, dan mudah dikembangkan."
+  },
+  {
+    "id": "sdd-kiro",
+    "title": "Spec-Driven Development dengan Kiro",
+    "issuer": "Dicoding Indonesia",
+    "date": "07 Apr 2026",
+    "category": "AI",
+    "file": "sertifikat_sdd.pdf",
+    "url": "https://www.dicoding.com/certificates/GRX5041GRZ0M",
+    "credentialId": "GRX5041GRZ0M",
+    "summary": "Menerapkan alur Spec-Driven Development (Requirements, Design, Implementation Task) dengan Kiro untuk membangun fitur aplikasi secara terstruktur, mulai dari perancangan spesifikasi dan prompt engineering hingga implementasi serta review kode berbantuan AI."
   },
   {
     "id": "devcert-android",
@@ -27,7 +51,8 @@
     "category": "Professional",
     "file": "Devcert_Android_Certificate.pdf",
     "url": "https://dev.id/certificate/verify/QZ0JZMMWE2",
-    "credentialId": "QZ0JZMMWE2"
+    "credentialId": "QZ0JZMMWE2",
+    "summary": "Sertifikasi profesional Android yang menilai proyek dan exit interview, memvalidasi kompetensi membangun aplikasi Android sesuai standar industri."
   },
   {
     "id": "android-expert",
@@ -37,7 +62,8 @@
     "category": "Android",
     "file": "sertifikat_expert_android.pdf",
     "url": "https://www.dicoding.com/certificates/MEPJQGN3QX3V",
-    "credentialId": "MEPJQGN3QX3V"
+    "credentialId": "MEPJQGN3QX3V",
+    "summary": "Kelas lanjutan Android yang menekankan arsitektur bersih, modularisasi, pengujian, dan praktik produksi untuk aplikasi skala besar."
   },
   {
     "id": "android-compose",
@@ -47,7 +73,8 @@
     "category": "Android",
     "file": "sertifikat_android_compose.pdf",
     "url": "https://www.dicoding.com/certificates/MRZMNO0NNPYQ",
-    "credentialId": "MRZMNO0NNPYQ"
+    "credentialId": "MRZMNO0NNPYQ",
+    "summary": "Membangun antarmuka Android modern dengan Jetpack Compose: komponen deklaratif, state management, navigasi, dan UI reaktif."
   },
   {
     "id": "bangkit-2024",
@@ -57,7 +84,8 @@
     "category": "Academy",
     "file": "[Bangkit 2024 Batch 2] Certificate - A312B4KY3244.pdf",
     "url": "",
-    "credentialId": "BA24/GRAD/XXV-01/A312B4KY3244"
+    "credentialId": "BA24/GRAD/XXV-01/A312B4KY3244",
+    "summary": "Menyelesaikan program academy Bangkit learning path Mobile Development (6 Sep–31 Des 2024), meliputi pembelajaran Android, soft skills, dan capstone project."
   },
   {
     "id": "android-intermediate",
@@ -67,7 +95,8 @@
     "category": "Android",
     "file": "sertifikat_intermediate_android.pdf",
     "url": "https://www.dicoding.com/certificates/QLZ9VLNVEX5D",
-    "credentialId": "QLZ9VLNVEX5D"
+    "credentialId": "QLZ9VLNVEX5D",
+    "summary": "Mengembangkan aplikasi Android tingkat menengah dengan arsitektur MVVM, repository, konsumsi API, penyimpanan lokal, dan pengujian."
   },
   {
     "id": "ml-applied",
@@ -77,7 +106,8 @@
     "category": "Machine Learning",
     "file": "sertifikat_applied_ML.pdf",
     "url": "https://www.dicoding.com/certificates/MRZMYVW5NZYQ",
-    "credentialId": "MRZMYVW5NZYQ"
+    "credentialId": "MRZMYVW5NZYQ",
+    "summary": "Menerapkan model machine learning pada aplikasi Android, mulai dari pengolahan data hingga inferensi on-device dalam fitur aplikasi."
   },
   {
     "id": "android-fundamental",
@@ -87,7 +117,8 @@
     "category": "Android",
     "file": "sertifikat_fundamental_android.pdf",
     "url": "https://www.dicoding.com/certificates/JLX14464GX72",
-    "credentialId": "JLX14464GX72"
+    "credentialId": "JLX14464GX72",
+    "summary": "Membangun aplikasi Android dengan Android Jetpack, integrasi API, penyimpanan data lokal, dan arsitektur yang mudah dipelihara."
   },
   {
     "id": "ai-basic",
@@ -97,7 +128,8 @@
     "category": "AI",
     "file": "sertifikat_basic_AI.pdf",
     "url": "https://www.dicoding.com/certificates/L4PQ55NN4ZO1",
-    "credentialId": "L4PQ55NN4ZO1"
+    "credentialId": "L4PQ55NN4ZO1",
+    "summary": "Memperkenalkan konsep dasar AI dan machine learning, jenis data, alur pengembangan model, serta pemanfaatan dan etika AI."
   },
   {
     "id": "android-basic",
@@ -107,7 +139,8 @@
     "category": "Android",
     "file": "sertifikat_basic_android.pdf",
     "url": "https://www.dicoding.com/certificates/98XW54N4LPM3",
-    "credentialId": "98XW54N4LPM3"
+    "credentialId": "98XW54N4LPM3",
+    "summary": "Dasar-dasar pengembangan aplikasi Android: Kotlin, layout, activity, dan pembuatan aplikasi sederhana untuk pemula."
   },
   {
     "id": "kotlin-basic",
@@ -117,6 +150,7 @@
     "category": "Kotlin",
     "file": "sertifikat_basic_kotlin.pdf",
     "url": "https://www.dicoding.com/certificates/GRX54GW4KP0M",
-    "credentialId": "GRX54GW4KP0M"
+    "credentialId": "GRX54GW4KP0M",
+    "summary": "Memahami dasar bahasa Kotlin—sintaks, tipe data, control flow, fungsi, OOP, dan functional programming—sebagai bekal pengembangan Android."
   }
 ]

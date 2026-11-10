@@ -6,7 +6,7 @@
     "tagline": "Personal reading tracker ",
     "thumb": "/logos/trackread.png",
     "stack": ["Vue", "TypeScript", "Laravel", "Tailwind"],
-    "links": { "live": "https://trackread.regazgaz.online", "github": "https://github.com/RegaRohadi/TrackRead" },
+    "links": { "live": "http://202.10.34.142:8081", "github": "https://github.com/RegaRohadi/TrackRead" },
     "detail": "Role: Frontend lead. Challenge: dense data had to stay scannable in a retro theme. Solution: inventory-style metric cards + minimal charts. Result: loads in <1.2s, demo used by 3 indie studios."
   },
   {
@@ -16,17 +16,17 @@
     "tagline": "Internal support ticketing",
     "thumb": "/logos/internaldesk.png",
     "stack": ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-    "links": { "live": "https://internaldesk.regazgaz.online", "github": "https://github.com/RegaRohadi/InternalDesk" },
+    "links": { "live": "http://202.10.34.142:8082", "github": "https://github.com/RegaRohadi/InternalDesk" },
     "detail": "Role: Fullstack. Challenge: cart & promos had to stay clear without a swipe trap. Solution: horizontal carousel + sticky #ff6b6b CTA. Result: +18% CTR to checkout."
   },
   {
-    "id": "echo-notes",
+    "id": "triagent",
     "level": 3,
-    "title": "Echo Notes",
-    "tagline": "Minimal note-taking with offline sync — no backend required.",
-    "thumb": "",
-    "stack": ["Vite", "IndexedDB", "PWA"],
-    "links": { "live": "#", "github": "#" },
-    "detail": "Role: Solo build. Challenge: conflict-free offline sync. Solution: lightweight CRDT + sync indicator. Result: 4.8 rating on Product Hunt launch."
+    "title": "TriAgent",
+    "tagline": "Three AI agents on one shared, provider-agnostic core.",
+    "thumb": "/logos/triagent.svg",
+    "stack": ["Python", "FastAPI", "LangGraph", "React"],
+    "links": { "live": "https://triagent.regazgaz.online", "github": "https://github.com/RegaRohadi/TriAgent" },
+    "detail": "Role: Solo build. Challenge: keep AI decisions auditable and safe across three very different tasks. Solution: one shared LLM core with provider failover, deterministic guardrails in code, and a single React UI for Mail (email agent), Lens (scrape & summarize) and Docs (grounded document chat). Result: runs fully offline on a mock LLM and switches to DeepSeek, OpenAI, Anthropic or any OpenAI-compatible endpoint with one key."
   }
 ]

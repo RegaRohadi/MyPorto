@@ -81,6 +81,11 @@ export function CertificateModal({
               {cert.issuer} · {cert.date}
               {cert.credentialId ? ` · ID ${cert.credentialId}` : ''}
             </p>
+            {cert.summary && (
+              <p className="text-sm mt-3" style={{ color: 'var(--gba-fg)' }}>
+                {cert.summary}
+              </p>
+            )}
           </div>
           <button type="button" className="arrow-btn focus-ring" onClick={requestClose} aria-label="Close">
             <XIcon className="w-4 h-4" />
