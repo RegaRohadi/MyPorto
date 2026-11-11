@@ -314,7 +314,11 @@ html::-webkit-scrollbar-thumb:active{ filter:brightness(.9); }
 @media(min-width:1024px){ .embla__slide{ flex:0 0 60% } }
 .carousel-projects .embla__slide{ flex:0 0 100%; min-width:0; }
 @media(min-width:768px){ .carousel-projects .embla__slide{ flex:0 0 66% } }
-@media(min-width:1024px){ .carousel-projects .embla__slide{ flex:0 0 49% } }
+/* Keep the slide above ~50% of the viewport. Embla trims snap points whose
+   alignment can't be reached: at 49% two slides + gap cover the viewport, so
+   the last card never gets its own snap and can never become the active
+   (highlighted) slide. 55% keeps all 3 project cards reachable. */
+@media(min-width:1024px){ .carousel-projects .embla__slide{ flex:0 0 55% } }
 .carousel-ui{ display:flex; align-items:center; justify-content:center; gap:14px; margin-top:14px; }
 .arrow-btn{
   width:34px; height:34px;
