@@ -1,5 +1,16 @@
 [
   {
+    "id": "cloud-genai-aws",
+    "title": "Belajar Dasar Cloud dan Gen AI di AWS",
+    "issuer": "Dicoding Indonesia",
+    "date": "09 Nov 2026",
+    "category": "Cloud",
+    "file": "sertifikat_course_251_3236863_091126145514.pdf",
+    "url": "https://www.dicoding.com/certificates/N9ZO09DE8XG5",
+    "credentialId": "N9ZO09DE8XG5",
+    "summary": "Kelas pengantar cloud computing berbasis standar kompetensi AWS: layanan komputasi, infrastruktur global, jaringan, penyimpanan dan database, keamanan, pemantauan, harga, migrasi, hingga dasar generative AI di AWS."
+  },
+  {
     "id": "devops-basic",
     "title": "Belajar Dasar-Dasar DevOps",
     "issuer": "Dicoding Indonesia",
