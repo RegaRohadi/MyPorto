@@ -3,11 +3,30 @@
     "id": "TrackRead",
     "level": 1,
     "title": "TrackRead",
-    "tagline": "Personal reading tracker ",
+    "tagline": "Personal reading tracker",
     "thumb": "/logos/trackread.png",
     "stack": ["Vue", "TypeScript", "Laravel", "Tailwind"],
-    "links": { "live": "http://202.10.34.142:8081", "github": "https://github.com/RegaRohadi/TrackRead" },
-    "detail": "Role: Frontend lead. Challenge: dense data had to stay scannable in a retro theme. Solution: inventory-style metric cards + minimal charts. Result: loads in <1.2s, demo used by 3 indie studios."
+    "links": {
+      "live": "https://trackread.regazgaz.online",
+      "github": "https://github.com/RegaRohadi/TrackRead"
+    },
+    "shots": [
+      {
+        "src": "/shots/trackread/katalog.png",
+        "label": "CATALOG",
+        "caption": "Search 16 titles by title, author, ISBN, or genre — switch between the shared platform catalog and your own shelf."
+      },
+      {
+        "src": "/shots/trackread/buku.png",
+        "label": "LIBRARY",
+        "caption": "Shelf-by-shelf library for want to read, reading, finished, and stopped books."
+      },
+      {
+        "src": "/shots/trackread/profil.png",
+        "label": "PROFILE",
+        "caption": "Reading stats, a yearly target, theme controls, and account management."
+      }
+    ]
   },
   {
     "id": "InternalDesk",
@@ -16,8 +35,47 @@
     "tagline": "Internal support ticketing",
     "thumb": "/logos/internaldesk.png",
     "stack": ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-    "links": { "live": "http://202.10.34.142:8082", "github": "https://github.com/RegaRohadi/InternalDesk" },
-    "detail": "Role: Fullstack. Challenge: cart & promos had to stay clear without a swipe trap. Solution: horizontal carousel + sticky #ff6b6b CTA. Result: +18% CTR to checkout."
+    "links": {
+      "live": "https://internaldesk.regazgaz.online",
+      "github": "https://github.com/RegaRohadi/InternalDesk"
+    },
+    "shots": [
+      {
+        "src": "/shots/internaldesk/dashboard.png",
+        "label": "REQUESTER HOME",
+        "caption": "Active-ticket counts, recent requests, and suggested knowledge-base articles in one view."
+      },
+      {
+        "src": "/shots/internaldesk/tickets.png",
+        "label": "MY TICKETS",
+        "caption": "Ticket list with status tabs, priority, SLA, assignee, and comment counts."
+      },
+      {
+        "src": "/shots/internaldesk/ticket-detail.png",
+        "label": "TICKET DETAIL",
+        "caption": "Full request context with status timeline, SLA timers, attachments, and a reply thread."
+      },
+      {
+        "src": "/shots/internaldesk/new-ticket.png",
+        "label": "NEW TICKET",
+        "caption": "Guided request wizard for category, summary, description, and attachments."
+      },
+      {
+        "src": "/shots/internaldesk/agent.png",
+        "label": "AGENT QUEUE",
+        "caption": "Department queue with assignment, priority filters, and overdue SLA warnings."
+      },
+      {
+        "src": "/shots/internaldesk/admin.png",
+        "label": "ADMIN ANALYTICS",
+        "caption": "Ticket volume, response time, SLA compliance, and agent performance at a glance."
+      },
+      {
+        "src": "/shots/internaldesk/knowledge.png",
+        "label": "KNOWLEDGE BASE",
+        "caption": "Searchable articles by category, with view and helpfulness signals."
+      }
+    ]
   },
   {
     "id": "triagent",
@@ -26,7 +84,64 @@
     "tagline": "Three AI agents on one shared, provider-agnostic core.",
     "thumb": "/logos/triagent.svg",
     "stack": ["Python", "FastAPI", "LangGraph", "React"],
-    "links": { "live": "https://triagent.regazgaz.online", "github": "https://github.com/RegaRohadi/TriAgent" },
-    "detail": "Role: Solo build. Challenge: keep AI decisions auditable and safe across three very different tasks. Solution: one shared LLM core with provider failover, deterministic guardrails in code, and a single React UI for Mail (email agent), Lens (scrape & summarize) and Docs (grounded document chat). Result: runs fully offline on a mock LLM and switches to DeepSeek, OpenAI, Anthropic or any OpenAI-compatible endpoint with one key."
+    "links": {
+      "live": "https://triagent.regazgaz.online",
+      "github": "https://github.com/RegaRohadi/TriAgent"
+    },
+    "shots": [
+      {
+        "src": "/shots/triagent/mail.png",
+        "label": "MAIL AGENT",
+        "caption": "Incoming email, ticket history, pipeline flow, decision trace, and retrieved knowledge in one audit trail."
+      },
+      {
+        "src": "/shots/triagent/lens.png",
+        "label": "LENS",
+        "caption": "Before/after scraper comparison showing extraction, chunking, map-reduce summaries, and length guardrails."
+      },
+      {
+        "src": "/shots/triagent/docs.png",
+        "label": "DOCS AGENT",
+        "caption": "Grounded document chat with per-session memory, source sections, and quick prompts."
+      }
+    ]
+  },
+  {
+    "id": "posbrew",
+    "level": 4,
+    "title": "POSBrew",
+    "tagline": "Coffee shop point of sale: cashier, stock, recipes, and reports.",
+    "thumb": "/logos/posbrew.svg",
+    "stack": ["Go", "Gin", "PostgreSQL", "React", "TypeScript", "Tailwind"],
+    "links": {
+      "github": "https://github.com/RegaRohadi/POSBrew"
+    },
+    "shots": [
+      {
+        "src": "/shots/posbrew/cashier.png",
+        "label": "CASHIER",
+        "caption": "Product catalog with photos, search, category filters, cart, discounts, and cash/QRIS/debit payment."
+      },
+      {
+        "src": "/shots/posbrew/dashboard.png",
+        "label": "DASHBOARD",
+        "caption": "Daily sales, low-stock alerts, top products, and the latest transactions."
+      },
+      {
+        "src": "/shots/posbrew/products.png",
+        "label": "PRODUCTS",
+        "caption": "Menu management with photos, categories, pricing, availability toggles, and search."
+      },
+      {
+        "src": "/shots/posbrew/reports.png",
+        "label": "REPORTS",
+        "caption": "Date-range revenue, daily trends, top products, and stock alerts."
+      },
+      {
+        "src": "/shots/posbrew/transactions.png",
+        "label": "TRANSACTIONS",
+        "caption": "Full sales history with cashier, payment status, totals, and cancellation."
+      }
+    ]
   }
 ]

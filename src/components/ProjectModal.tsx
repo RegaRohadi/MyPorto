@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import type { Project } from '../types'
 import { PROJECT_ART } from '../data/art'
 import { useCloseAnimation } from '../hooks/useCloseAnimation'
+import { Carousel } from './Carousel'
 import { PixelArt } from './PixelArt'
 import { SkillIcon } from './SkillIcon'
 import { XIcon } from './icons'
@@ -14,6 +15,8 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
   const dialogRef = useRef<HTMLDivElement>(null)
   const prevFocus = useRef<Element | null>(null)
   const { closing, requestClose } = useCloseAnimation(onClose)
+  const shots = project.shots ?? []
+  const live = project.links.live
 
   useEffect(() => {
     prevFocus.current = document.activeElement
@@ -59,40 +62,71 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
       onClick={requestClose}
       role="presentation"
     >
-        <div
-          ref={dialogRef}
-          className="modal"
-          role="dialog"
-          aria-modal="true"
-          aria-label={project.title}
-          tabIndex={-1}
-          onClick={(e) => e.stopPropagation()}
-        >
-        <div
-          className="flex items-start justify-between gap-4 p-4"
-          style={{ borderBottom: '2px solid var(--gba-border)' }}
-        >
-          <h3 className="h-section">{project.title}</h3>
+      <div
+        ref={dialogRef}
+        className="modal project-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={project.title}
+        tabIndex={-1}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="modal-head flex items-start justify-between gap-4 p-4">
+          <div className="min-w-0">
+            <h3 className="h-section">{project.title}</h3>
+            <p className="text-xs mt-2" style={{ color: 'var(--gba-dim)' }}>
+              {project.tagline}
+            </p>
+          </div>
           <button type="button" className="arrow-btn focus-ring" onClick={requestClose} aria-label="Close">
             <XIcon className="w-4 h-4" />
           </button>
         </div>
+
         <div className="p-4">
-          <div
-            className="modal-art rounded-lg overflow-hidden flex items-center justify-center"
-            style={{ border: '1px solid var(--gba-border)', background: 'var(--gba-card-2)' }}
-          >
-            {project.thumb ? (
-              <img
-                src={project.thumb}
-                alt={`${project.title} logo`}
-                className="w-full aspect-[5/3] object-contain"
-              />
-            ) : (
-              <PixelArt rows={PROJECT_ART[project.id] ?? []} className="w-full aspect-[5/3]" />
-            )}
-          </div>
-          <p className="body-copy mt-4">{project.detail}</p>
+          {shots.length > 0 ? (
+            <Carousel label={`${project.title} feature screenshots`} className="carousel-shots">
+              {shots.map((shot, i) => (
+                <figure key={shot.src} className="min-w-0">
+                  <a
+                    className="shot-stage focus-ring"
+                    href={shot.src}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${shot.label} screenshot in a new tab`}
+                    title="Open full-size screenshot"
+                  >
+                    <img
+                      src={shot.src}
+                      alt={`${project.title} — ${shot.label}`}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                    />
+                  </a>
+                  <figcaption className="shot-caption">
+                    <span className="shot-label">{shot.label}</span>
+                    <span className="shot-text">{shot.caption}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </Carousel>
+          ) : (
+            <div
+              className="modal-art rounded-lg overflow-hidden flex items-center justify-center"
+              style={{ border: '1px solid var(--gba-border)', background: 'var(--gba-card-2)' }}
+            >
+              {project.thumb ? (
+                <img
+                  src={project.thumb}
+                  alt={`${project.title} logo`}
+                  className="w-full aspect-[5/3] object-contain"
+                />
+              ) : (
+                <PixelArt rows={PROJECT_ART[project.id] ?? []} className="w-full aspect-[5/3]" />
+              )}
+            </div>
+          )}
+
           <div className="flex flex-wrap gap-2 mt-4">
             {project.stack.map((s) => (
               <span className="chip inline-flex items-center gap-1.5" key={s}>
@@ -101,11 +135,19 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
               </span>
             ))}
           </div>
-          <div className="flex gap-3 mt-5">
-            <a className="btn btn-accent focus-ring" href={project.links.live} target="_blank" rel="noreferrer">
-              LIVE DEMO
-            </a>
-            <a className="btn btn-ghost focus-ring" href={project.links.github} target="_blank" rel="noreferrer">
+
+          <div className="flex flex-wrap gap-3 mt-5">
+            {live ? (
+              <a className="btn btn-accent focus-ring" href={live} target="_blank" rel="noreferrer">
+                LIVE DEMO
+              </a>
+            ) : null}
+            <a
+              className="btn btn-ghost focus-ring"
+              href={project.links.github}
+              target="_blank"
+              rel="noreferrer"
+            >
               SOURCE
             </a>
           </div>

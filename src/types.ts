@@ -1,3 +1,12 @@
+export interface ProjectShot {
+  /** Public URL of the screenshot. */
+  src: string
+  /** Short pixel label shown above the caption. */
+  label: string
+  /** One-line description of the feature shown. */
+  caption: string
+}
+
 export interface Project {
   id: string
   level: number
@@ -5,8 +14,9 @@ export interface Project {
   tagline: string
   thumb: string
   stack: string[]
-  links: { live: string; github: string }
-  detail: string
+  links: { live?: string; github: string }
+  /** Feature screenshots shown in the detail carousel. */
+  shots?: ProjectShot[]
 }
 
 export interface Certificate {

@@ -105,24 +105,13 @@ export function Projects({ active, register }: { active: boolean; register: Regi
                 </div>
 
                 <div className="flex gap-2 mt-auto pt-3">
-                  {p.links.live && p.links.live !== '#' ? (
-                    <a
-                      className="btn btn-accent btn-sm focus-ring"
-                      href={p.links.live}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      VIEW DETAILS
-                    </a>
-                  ) : (
-                    <button
-                      type="button"
-                      className="btn btn-accent btn-sm focus-ring"
-                      onClick={() => setOpenId(p.id)}
-                    >
-                      VIEW DETAILS
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    className="btn btn-accent btn-sm focus-ring"
+                    onClick={() => setOpenId(p.id)}
+                  >
+                    VIEW DETAILS
+                  </button>
 
                   <a
                     className="btn btn-ghost btn-sm focus-ring"
