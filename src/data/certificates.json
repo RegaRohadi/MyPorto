@@ -1,5 +1,16 @@
 [
   {
+    "id": "python-basic",
+    "title": "Memulai Pemrograman dengan Python",
+    "issuer": "Dicoding Indonesia",
+    "date": "14 Nov 2026",
+    "category": "Python",
+    "file": "sertifikat_course_dasar_python.pdf",
+    "url": "https://www.dicoding.com/certificates/81P2KL3YQXOY",
+    "credentialId": "81P2KL3YQXOY",
+    "summary": "Kelas dasar pemrograman Python sesuai standar industri: tipe data, ekspresi, aksi sekuensial, control flow, array dan matriks, subprogram, OOP, style guide PEP8, unit testing, serta library populer Python."
+  },
+  {
     "id": "cloud-genai-aws",
     "title": "Belajar Dasar Cloud dan Gen AI di AWS",
     "issuer": "Dicoding Indonesia",
